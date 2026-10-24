@@ -37,8 +37,8 @@ export const TopNav: React.FC<TopNavProps> = ({
         </div>
 
         {/* Title */}
-        <h1 className="font-editorial text-lg sm:text-xl font-semibold tracking-wide text-[#1A140F]">
-          Wedding Booking
+        <h1 className="font-editorial text-base sm:text-lg font-bold tracking-[0.16em] text-[#1A140F] uppercase">
+          LEEKA BOOKING
         </h1>
 
         {/* Step indicator */}
