@@ -135,7 +135,7 @@ export function buildWhatsAppMessage(data: EnquiryData): string {
       .filter(Boolean);
 
     if (deliverableLabels.length > 0) {
-      lines.push('*Requested Deliverables & Reels*');
+      lines.push('*Services & Deliverables*');
       deliverableLabels.forEach((item) => {
         lines.push(`• ${item}`);
       });

@@ -387,17 +387,17 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
           </div>
         </div>
 
-        {/* Section 5: Preferred Deliverables & Reels */}
+        {/* Section 5: Services & Deliverables */}
         <div className="border-t border-[#EAE3D9] pt-3 flex flex-col gap-2">
           <div>
             <div className="flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#9C7C5F]" />
               <label className="text-xs font-semibold text-[#2D251E] tracking-wide">
-                Preferred Deliverables & Reels (Optional)
+                Services & Deliverables
               </label>
             </div>
             <p className="text-[11px] text-[#8C7E72] pl-5">
-              Select all media formats you&apos;d like included in your custom proposal.
+              Select all photography, film, reels & album formats you&apos;d like included.
             </p>
           </div>
 
@@ -409,7 +409,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                   key={item.id}
                   type="button"
                   onClick={() => toggleDeliverable(item.id)}
-                  className={`flex items-center justify-start gap-2.5 py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                  className={`flex items-center justify-start gap-2.5 py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] last:col-span-2 ${
                     active
                       ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#4A3D31] font-semibold shadow-xs ring-1 ring-[#A88669]/20'
                       : 'bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white'

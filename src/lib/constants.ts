@@ -36,6 +36,7 @@ export const AVAILABLE_EXTRAS = [
 ];
 
 export const AVAILABLE_DELIVERABLES = [
+  { id: 'photography', label: 'Photography', icon: '📸' },
   { id: 'highlights', label: 'Highlights Film', icon: '🎬' },
   { id: 'teaser', label: 'Teaser Video', icon: '🎞️' },
   { id: 'full_video', label: 'Full Video', icon: '📹' },
@@ -62,7 +63,7 @@ export const INITIAL_ENQUIRY_DATA: EnquiryData = {
   ],
   photographerCount: '2',
   videography: 'yes',
-  deliverables: ['highlights', 'teaser', 'albums'],
+  deliverables: ['photography', 'highlights', 'teaser', 'albums'],
   extras: [],
   otherExtra: '',
   specialRequests: '',
