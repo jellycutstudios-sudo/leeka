@@ -10,8 +10,9 @@ import {
   Check,
   Flower2,
   Flame,
-  Camera as CameraIcon,
+  Camera,
   Film,
+  Navigation,
 } from 'lucide-react';
 import type { EnquiryData } from '../../types/enquiry';
 import { formatDisplayDate } from '../../lib/formatDate';
@@ -27,10 +28,10 @@ interface StepReviewProps {
 }
 
 const EXTRAS_OPTIONS = [
-  { id: 'drone', label: 'Drone', icon: <span className="text-sm">🚁</span> },
-  { id: 'sfx_fireworks', label: 'Cold Sparks', icon: <Flame className="w-3.5 h-3.5 text-amber-600" /> },
-  { id: 'photobooth', label: 'Photobooth', icon: <CameraIcon className="w-3.5 h-3.5 text-[#8C7E72]" /> },
-  { id: 'butterfly', label: 'Butterfly Effect', icon: <span className="text-sm">🦋</span> },
+  { id: 'drone', label: 'Drone', icon: <Navigation className="w-3.5 h-3.5" /> },
+  { id: 'sfx_fireworks', label: 'Cold Sparks', icon: <Flame className="w-3.5 h-3.5" /> },
+  { id: 'photobooth', label: 'Photobooth', icon: <Camera className="w-3.5 h-3.5" /> },
+  { id: 'butterfly', label: 'Butterfly Effect', icon: <Sparkles className="w-3.5 h-3.5" /> },
 ];
 
 export const StepReview: React.FC<StepReviewProps> = ({
@@ -248,14 +249,29 @@ export const StepReview: React.FC<StepReviewProps> = ({
                   key={item.id}
                   type="button"
                   onClick={() => toggleExtra(item.id)}
-                  className={`flex items-center justify-start gap-2.5 py-3 px-3.5 sm:px-4 rounded-2xl text-xs font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                  className={`flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-2xl text-xs font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                     active
-                      ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#4A3D31] font-semibold shadow-xs'
+                      ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#3E3126] font-semibold shadow-xs'
                       : 'bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white'
                   }`}
                 >
-                  <span className="shrink-0">{item.icon}</span>
-                  <span className="truncate">{item.label}</span>
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#8C7E72]'}`}>
+                      {item.icon}
+                    </span>
+                    <span className="truncate">{item.label}</span>
+                  </div>
+
+                  {/* Multi-select checkmark circle */}
+                  <div
+                    className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
+                      active
+                        ? 'bg-[#8E6D52] text-white shadow-2xs'
+                        : 'border border-[#C8BAAB] bg-white/60'
+                    }`}
+                  >
+                    {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}
+                  </div>
                 </button>
               );
             })}
