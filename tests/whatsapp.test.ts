@@ -37,10 +37,10 @@ describe('WhatsApp Message Builder & Deep Link', () => {
     expect(message).toContain('• Wedding');
     expect(message).toContain('*Services & Deliverables*');
     expect(message).toContain('• Photography');
-    expect(message).toContain('Highlights Film');
-    expect(message).toContain('Teaser Video');
+    expect(message).toContain('Highlights');
+    expect(message).toContain('Teaser');
     expect(message).toContain('Cam Reels');
-    expect(message).toContain('Wedding Album');
+    expect(message).toContain('Album');
     expect(message).toContain('*Creative Extras*');
     expect(message).toContain('Drone');
     expect(message).toContain('Cold Sparks');

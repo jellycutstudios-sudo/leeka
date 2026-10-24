@@ -37,9 +37,9 @@ export const AVAILABLE_EXTRAS = [
 
 export const AVAILABLE_DELIVERABLES = [
   { id: 'photography', label: 'Photography', icon: '📸', category: 'photo' },
-  { id: 'albums', label: 'Wedding Album', icon: '📖', category: 'photo' },
-  { id: 'highlights', label: 'Highlights Film', icon: '🎬', category: 'film' },
-  { id: 'teaser', label: 'Teaser Video', icon: '🎞️', category: 'film' },
+  { id: 'albums', label: 'Album', icon: '📖', category: 'photo' },
+  { id: 'highlights', label: 'Highlights', icon: '🎬', category: 'film' },
+  { id: 'teaser', label: 'Teaser', icon: '🎞️', category: 'film' },
   { id: 'cam_reels', label: 'Cam Reels', icon: '🎥', category: 'film' },
   { id: 'iphone_reel', label: 'iPhone Reel', icon: '📱', category: 'film' },
   { id: 'full_video', label: 'Full Video', icon: '📹', category: 'film' },
