@@ -32,17 +32,17 @@ export const AVAILABLE_EXTRAS = [
   { id: 'butterfly', label: 'Butterfly Effect & Confetti', description: 'Dreamy visual shower effect for stage & varmala moments' },
   { id: 'drone', label: 'Drone Cinematic Coverage', description: 'Sweeping aerial 4K perspectives of venue and procession' },
   { id: 'same_day_edit', label: 'Same-Day Reel / Teaser', description: 'Quick-turnaround 60s vertical video to post the next morning' },
-  { id: 'luxury_album', label: 'Handcrafted Flushmount Albums', description: 'Italian leather & matte fine-art archival prints' },
+  { id: 'luxury_album', label: 'Handcrafted Wedding Album', description: 'Archival fine-art prints with presentation box' },
 ];
 
 export const AVAILABLE_DELIVERABLES = [
-  { id: 'photography', label: 'Photography', icon: '📸' },
-  { id: 'highlights', label: 'Highlights Film', icon: '🎬' },
-  { id: 'teaser', label: 'Teaser Video', icon: '🎞️' },
-  { id: 'full_video', label: 'Full Video', icon: '📹' },
-  { id: 'cam_reels', label: 'Cam Reels', icon: '🎥' },
-  { id: 'iphone_reel', label: 'iPhone Reel', icon: '📱' },
-  { id: 'albums', label: 'Luxury Albums', icon: '📖' },
+  { id: 'photography', label: 'Photography', icon: '📸', category: 'photo' },
+  { id: 'albums', label: 'Wedding Album', icon: '📖', category: 'photo' },
+  { id: 'highlights', label: 'Highlights Film', icon: '🎬', category: 'film' },
+  { id: 'teaser', label: 'Teaser Video', icon: '🎞️', category: 'film' },
+  { id: 'cam_reels', label: 'Cam Reels', icon: '🎥', category: 'film' },
+  { id: 'iphone_reel', label: 'iPhone Reel', icon: '📱', category: 'film' },
+  { id: 'full_video', label: 'Full Video', icon: '📹', category: 'film' },
 ];
 
 export const INITIAL_ENQUIRY_DATA: EnquiryData = {

@@ -44,7 +44,7 @@ describe('WhatsApp Message Builder & Deep Link', () => {
     expect(message).toContain('Highlights Film');
     expect(message).toContain('Teaser Video');
     expect(message).toContain('Cam Reels');
-    expect(message).toContain('Luxury Albums');
+    expect(message).toContain('Wedding Album');
     expect(message).toContain('*Creative Extras*');
     expect(message).toContain('Drone');
     expect(message).toContain('Cold Sparks');

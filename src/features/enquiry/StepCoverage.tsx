@@ -388,7 +388,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
         </div>
 
         {/* Section 5: Services & Deliverables */}
-        <div className="border-t border-[#EAE3D9] pt-3 flex flex-col gap-2">
+        <div className="border-t border-[#EAE3D9] pt-3 flex flex-col gap-3">
           <div>
             <div className="flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#9C7C5F]" />
@@ -397,29 +397,62 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
               </label>
             </div>
             <p className="text-[11px] text-[#8C7E72] pl-5">
-              Select all photography, film, reels & album formats you&apos;d like included.
+              Select all photography, album, film & reel formats you&apos;d like included.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-2.5 mt-1">
-            {AVAILABLE_DELIVERABLES.map((item) => {
-              const active = (data.deliverables || []).includes(item.id);
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => toggleDeliverable(item.id)}
-                  className={`flex items-center justify-start gap-2.5 py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] last:col-span-2 ${
-                    active
-                      ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#4A3D31] font-semibold shadow-xs ring-1 ring-[#A88669]/20'
-                      : 'bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white'
-                  }`}
-                >
-                  <span className="shrink-0 text-sm">{item.icon}</span>
-                  <span className="truncate">{item.label}</span>
-                </button>
-              );
-            })}
+          {/* Group A: Photography & Wedding Album */}
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[10px] font-semibold text-[#8C7E72] tracking-wider uppercase pl-0.5">
+              Photography & Keepsake
+            </span>
+            <div className="grid grid-cols-2 gap-2.5">
+              {AVAILABLE_DELIVERABLES.filter((d) => d.category === 'photo').map((item) => {
+                const active = (data.deliverables || []).includes(item.id);
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => toggleDeliverable(item.id)}
+                    className={`flex items-center justify-start gap-2.5 py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                      active
+                        ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#4A3D31] font-semibold shadow-xs ring-1 ring-[#A88669]/20'
+                        : 'bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white'
+                    }`}
+                  >
+                    <span className="shrink-0 text-sm">{item.icon}</span>
+                    <span className="truncate">{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Group B: Films & Reels */}
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[10px] font-semibold text-[#8C7E72] tracking-wider uppercase pl-0.5">
+              Films & Reels
+            </span>
+            <div className="grid grid-cols-2 gap-2.5">
+              {AVAILABLE_DELIVERABLES.filter((d) => d.category === 'film').map((item) => {
+                const active = (data.deliverables || []).includes(item.id);
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => toggleDeliverable(item.id)}
+                    className={`flex items-center justify-start gap-2.5 py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] last:col-span-2 ${
+                      active
+                        ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#4A3D31] font-semibold shadow-xs ring-1 ring-[#A88669]/20'
+                        : 'bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white'
+                    }`}
+                  >
+                    <span className="shrink-0 text-sm">{item.icon}</span>
+                    <span className="truncate">{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
