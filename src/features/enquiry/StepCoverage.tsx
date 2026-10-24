@@ -160,7 +160,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
         </div>
 
         {/* Section 1: Select Ceremonies (Bordered Card) */}
-        <div className="rounded-2xl border border-[#D5C5B5] bg-[#FAF7F2] p-3.5 sm:p-4 flex flex-col gap-2.5 shadow-2xs">
+        <div className="rounded-2xl border border-[#D5C5B5] bg-[#FAF7F2] p-3 sm:p-4 flex flex-col gap-2.5 shadow-2xs">
           <div className="flex items-center justify-between pb-1.5 border-b border-[#EAE0D5]">
             <div className="flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
@@ -184,28 +184,28 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                   key={item.id}
                   type="button"
                   onClick={() => toggleEvent(item.label)}
-                  className={`flex items-center justify-between py-2.5 px-3 rounded-xl text-xs sm:text-[13px] font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                  className={`flex items-center justify-between py-2.5 px-2.5 sm:px-3 rounded-xl text-[12px] sm:text-[13px] font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                     active
                       ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] shadow-xs'
                       : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                   }`}
                 >
-                  <div className="flex items-center gap-2 min-w-0">
+                  <div className="flex items-center gap-1.5 min-w-0">
                     <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
                       {item.icon}
                     </span>
-                    <span className="truncate">{item.label}</span>
+                    <span className="whitespace-nowrap">{item.label}</span>
                   </div>
 
                   {/* Multi-select checkmark circle */}
                   <div
-                    className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
+                    className={`w-3.5 h-3.5 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
                       active
                         ? 'bg-[#8E6D52] text-white shadow-2xs'
                         : 'border-2 border-[#B4A08E] bg-white'
                     }`}
                   >
-                    {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}
+                    {active && <Check className="w-2 h-2 stroke-[3] text-white" />}
                   </div>
                 </button>
               );
@@ -215,11 +215,11 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
             <button
               type="button"
               onClick={() => setShowCustomInput(!showCustomInput)}
-              className="flex items-center justify-between py-2.5 px-3 rounded-xl text-xs sm:text-[13px] font-semibold bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1] transition-all cursor-pointer"
+              className="flex items-center justify-between py-2.5 px-2.5 sm:px-3 rounded-xl text-[12px] sm:text-[13px] font-semibold bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1] transition-all cursor-pointer"
             >
-              <div className="flex items-center gap-2 min-w-0">
+              <div className="flex items-center gap-1.5 min-w-0">
                 <MoreHorizontal className="w-3.5 h-3.5 text-[#6E533C] shrink-0" />
-                <span>Custom</span>
+                <span className="whitespace-nowrap">Custom</span>
               </div>
               <Plus className="w-3.5 h-3.5 text-[#8E6D52] shrink-0 ml-1" />
             </button>
@@ -257,7 +257,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
         </div>
 
         {/* Section 2: Services & Deliverables (Bordered Card) */}
-        <div className="rounded-2xl border border-[#D5C5B5] bg-[#FAF7F2] p-3.5 sm:p-4 flex flex-col gap-3.5 shadow-2xs">
+        <div className="rounded-2xl border border-[#D5C5B5] bg-[#FAF7F2] p-3 sm:p-4 flex flex-col gap-3.5 shadow-2xs">
           <div>
             <div className="flex items-center justify-between pb-1.5 border-b border-[#EAE0D5]">
               <div className="flex items-center gap-1.5">
@@ -288,28 +288,28 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                     key={item.id}
                     type="button"
                     onClick={() => toggleDeliverable(item.id)}
-                    className={`flex items-center justify-between py-2.5 px-3 rounded-xl text-xs sm:text-[13px] font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                    className={`flex items-center justify-between py-2.5 px-2.5 sm:px-3 rounded-xl text-[12px] sm:text-[13px] font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                       active
                         ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] shadow-xs'
                         : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                     }`}
                   >
-                    <div className="flex items-center gap-2 min-w-0">
+                    <div className="flex items-center gap-1.5 min-w-0">
                       <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
                         {DELIVERABLE_ICONS[item.id] || <Sparkles className="w-3.5 h-3.5" />}
                       </span>
-                      <span className="truncate">{item.label}</span>
+                      <span className="whitespace-nowrap">{item.label}</span>
                     </div>
 
                     {/* Multi-select checkmark circle */}
                     <div
-                      className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
+                      className={`w-3.5 h-3.5 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
                         active
                           ? 'bg-[#8E6D52] text-white shadow-2xs'
                           : 'border-2 border-[#B4A08E] bg-white'
                       }`}
                     >
-                      {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}
+                      {active && <Check className="w-2 h-2 stroke-[3] text-white" />}
                     </div>
                   </button>
                 );
@@ -330,7 +330,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                     key={item.id}
                     type="button"
                     onClick={() => toggleDeliverable(item.id)}
-                    className={`flex items-center justify-between py-2.5 px-3 rounded-xl text-xs sm:text-[13px] font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                    className={`flex items-center justify-between py-2.5 px-2.5 sm:px-3 rounded-xl text-[12px] sm:text-[13px] font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                       item.id === 'full_video' ? 'col-span-2' : ''
                     } ${
                       active
@@ -338,22 +338,22 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                         : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                     }`}
                   >
-                    <div className="flex items-center gap-2 min-w-0">
+                    <div className="flex items-center gap-1.5 min-w-0">
                       <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
                         {DELIVERABLE_ICONS[item.id] || <Sparkles className="w-3.5 h-3.5" />}
                       </span>
-                      <span className="truncate">{item.label}</span>
+                      <span className="whitespace-nowrap">{item.label}</span>
                     </div>
 
                     {/* Multi-select checkmark circle */}
                     <div
-                      className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
+                      className={`w-3.5 h-3.5 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
                         active
                           ? 'bg-[#8E6D52] text-white shadow-2xs'
                           : 'border-2 border-[#B4A08E] bg-white'
                       }`}
                     >
-                      {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}
+                      {active && <Check className="w-2 h-2 stroke-[3] text-white" />}
                     </div>
                   </button>
                 );
