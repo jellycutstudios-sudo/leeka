@@ -298,7 +298,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
       <button
         type="button"
         onClick={handleOpenWhatsApp}
-        className="w-full bg-gradient-to-r from-[#2AA657] to-[#1E8A44] text-white rounded-2xl py-4 px-6 flex items-center justify-between font-medium tracking-wide shadow-[0_6px_20px_rgba(30,138,68,0.25)] hover:brightness-105 active:scale-[0.99] transition-all cursor-pointer select-none text-sm sm:text-base"
+        className="relative w-full bg-gradient-to-r from-[#2AA657] to-[#1E8A44] text-white rounded-2xl py-4 px-6 flex items-center justify-center font-medium tracking-wide shadow-[0_6px_20px_rgba(30,138,68,0.25)] hover:brightness-105 active:scale-[0.99] transition-all cursor-pointer select-none text-sm sm:text-base"
       >
         <div className="flex items-center gap-2.5">
           <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -306,7 +306,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
           </svg>
           <span className="font-semibold tracking-wide">Send to WhatsApp</span>
         </div>
-        <ChevronRight className="w-4 h-4 text-white/90" />
+        <ChevronRight className="w-4 h-4 absolute right-6 text-white/90" />
       </button>
 
       {/* Secondary Action Button (Copy Enquiry Message) */}
