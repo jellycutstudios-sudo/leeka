@@ -16,6 +16,7 @@ import {
   MoreHorizontal,
 } from 'lucide-react';
 import type { EnquiryData, EventItem } from '../../types/enquiry';
+import { AVAILABLE_DELIVERABLES } from '../../lib/constants';
 import { step2Schema, type Step2Errors } from '../../lib/validation';
 
 interface StepCoverageProps {
@@ -120,6 +121,13 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
   const removeEvent = (id: string) => {
     if (data.events.length <= 1) return;
     onChange({ events: data.events.filter((e) => e.id !== id) });
+  };
+
+  const toggleDeliverable = (id: string) => {
+    const current = data.deliverables || [];
+    const exists = current.includes(id);
+    const updated = exists ? current.filter((x) => x !== id) : [...current, id];
+    onChange({ deliverables: updated });
   };
 
   return (
@@ -373,6 +381,42 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                   }`}
                 >
                   {item.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Section 5: Preferred Deliverables & Reels */}
+        <div className="border-t border-[#EAE3D9] pt-3 flex flex-col gap-2">
+          <div>
+            <div className="flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-[#9C7C5F]" />
+              <label className="text-xs font-semibold text-[#2D251E] tracking-wide">
+                Preferred Deliverables & Reels (Optional)
+              </label>
+            </div>
+            <p className="text-[11px] text-[#8C7E72] pl-5">
+              Select all media formats you&apos;d like included in your custom proposal.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2.5 mt-1">
+            {AVAILABLE_DELIVERABLES.map((item) => {
+              const active = (data.deliverables || []).includes(item.id);
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => toggleDeliverable(item.id)}
+                  className={`flex items-center justify-start gap-2.5 py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                    active
+                      ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#4A3D31] font-semibold shadow-xs ring-1 ring-[#A88669]/20'
+                      : 'bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white'
+                  }`}
+                >
+                  <span className="shrink-0 text-sm">{item.icon}</span>
+                  <span className="truncate">{item.label}</span>
                 </button>
               );
             })}

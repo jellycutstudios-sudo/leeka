@@ -13,9 +13,11 @@ import {
   Flower2,
   Flame,
   Camera as CameraIcon,
+  Film,
 } from 'lucide-react';
 import type { EnquiryData } from '../../types/enquiry';
 import { formatDisplayDate } from '../../lib/formatDate';
+import { AVAILABLE_DELIVERABLES } from '../../lib/constants';
 import { buildWhatsAppMessage, buildWhatsAppUrl } from '../../lib/whatsapp';
 
 interface StepReviewProps {
@@ -83,6 +85,14 @@ export const StepReview: React.FC<StepReviewProps> = ({
 
   const ceremoniesList =
     data.events.map((e) => e.type).join(', ') || 'Wedding / Muhurtham';
+
+  const deliverablesList =
+    (data.deliverables || [])
+      .map((id) => {
+        const found = AVAILABLE_DELIVERABLES.find((d) => d.id === id);
+        return found ? found.label : id;
+      })
+      .join(', ') || 'None selected';
 
   return (
     <div className="w-full flex flex-col gap-5 animate-fadeIn">
@@ -240,6 +250,26 @@ export const StepReview: React.FC<StepReviewProps> = ({
               Edit
             </button>
           </div>
+
+          {/* Row 8: Deliverables & Reels (if any selected) */}
+          {data.deliverables && data.deliverables.length > 0 && (
+            <div className="py-2.5 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 flex-1 min-w-0">
+                <Film className="w-4 h-4 text-[#8C7E72] shrink-0" />
+                <div className="min-w-0">
+                  <span className="text-[11px] text-[#8C7E72] block">Deliverables & Reels</span>
+                  <p className="font-medium text-[#2D251E] truncate">{deliverablesList}</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => onEditStep(2)}
+                className="px-2.5 py-1 text-[11px] font-medium text-[#6B5E52] bg-white/70 hover:bg-white border border-[#E6DDD2] rounded-lg transition-colors cursor-pointer shrink-0"
+              >
+                Edit
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Section: Add Creative Extras (Optional) */}

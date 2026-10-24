@@ -20,6 +20,7 @@ describe('WhatsApp Message Builder & Deep Link', () => {
       ],
       photographerCount: '2' as const,
       videography: 'yes' as const,
+      deliverables: ['highlights', 'teaser', 'cam_reels', 'albums'],
       extras: ['drone', 'sfx_fireworks'],
       specialRequests: 'Looking for warm candid editorial style.',
     };
@@ -38,6 +39,11 @@ describe('WhatsApp Message Builder & Deep Link', () => {
     expect(message).toContain('*Team Preferences*');
     expect(message).toContain('• Photography: 2 Photographers');
     expect(message).toContain('• Cinematic Film: Yes');
+    expect(message).toContain('*Requested Deliverables & Reels*');
+    expect(message).toContain('Highlights Film');
+    expect(message).toContain('Teaser Video');
+    expect(message).toContain('Cam Reels');
+    expect(message).toContain('Luxury Albums');
     expect(message).toContain('*Creative Extras*');
     expect(message).toContain('Drone');
     expect(message).toContain('Cold Sparks');

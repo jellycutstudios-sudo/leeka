@@ -35,6 +35,15 @@ export const AVAILABLE_EXTRAS = [
   { id: 'luxury_album', label: 'Handcrafted Flushmount Albums', description: 'Italian leather & matte fine-art archival prints' },
 ];
 
+export const AVAILABLE_DELIVERABLES = [
+  { id: 'highlights', label: 'Highlights Film', icon: '🎬' },
+  { id: 'teaser', label: 'Teaser Video', icon: '🎞️' },
+  { id: 'full_video', label: 'Full Video', icon: '📹' },
+  { id: 'cam_reels', label: 'Cam Reels', icon: '🎥' },
+  { id: 'iphone_reel', label: 'iPhone Reel', icon: '📱' },
+  { id: 'albums', label: 'Luxury Albums', icon: '📖' },
+];
+
 export const INITIAL_ENQUIRY_DATA: EnquiryData = {
   contactName: '',
   countryCode: '+91',
@@ -53,6 +62,7 @@ export const INITIAL_ENQUIRY_DATA: EnquiryData = {
   ],
   photographerCount: '2',
   videography: 'yes',
+  deliverables: ['highlights', 'teaser', 'albums'],
   extras: [],
   otherExtra: '',
   specialRequests: '',

@@ -1,6 +1,6 @@
 import type { EnquiryData } from '../types/enquiry';
 import { formatDisplayDate } from './formatDate';
-import { AVAILABLE_EXTRAS } from './constants';
+import { AVAILABLE_EXTRAS, AVAILABLE_DELIVERABLES } from './constants';
 
 /**
  * Gets the configured Leeka Wedding WhatsApp number.
@@ -125,7 +125,25 @@ export function buildWhatsAppMessage(data: EnquiryData): string {
   lines.push(`• Cinematic Film: ${getVideographyLabel(data.videography)}`);
   lines.push('');
 
-  // 5. Creative Extras (only if selected)
+  // 5. Requested Deliverables & Reels (if any selected)
+  if (data.deliverables && data.deliverables.length > 0) {
+    const deliverableLabels = data.deliverables
+      .map((id) => {
+        const found = AVAILABLE_DELIVERABLES.find((d) => d.id === id);
+        return found ? found.label : id;
+      })
+      .filter(Boolean);
+
+    if (deliverableLabels.length > 0) {
+      lines.push('*Requested Deliverables & Reels*');
+      deliverableLabels.forEach((item) => {
+        lines.push(`• ${item}`);
+      });
+      lines.push('');
+    }
+  }
+
+  // 6. Creative Extras (only if selected)
   const selectedExtraLabels = data.extras
     .map((extraId) => {
       const found = AVAILABLE_EXTRAS.find((e) => e.id === extraId);

@@ -21,10 +21,11 @@ export interface EnquiryData {
   primaryDate: string; // YYYY-MM-DD
   primaryLocation: string;
 
-  // Step 2: Coverage & Crew
+  // Step 2: Coverage, Crew & Deliverables
   events: EventItem[];
   photographerCount: PhotographerCount;
   videography: VideographyChoice;
+  deliverables: string[];
 
   // Step 3: Extras & Review
   extras: string[];
