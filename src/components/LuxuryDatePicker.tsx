@@ -36,10 +36,32 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Parse current value or default to current date
-  const initialDate = value && value.includes('-') ? new Date(value + 'T00:00:00') : new Date();
-  const [viewYear, setViewYear] = useState(initialDate.getFullYear() || 2026);
-  const [viewMonth, setViewMonth] = useState(initialDate.getMonth() || 0);
+  const [viewYear, setViewYear] = useState<number>(() => {
+    if (value && value.includes('-')) {
+      const d = new Date(value + 'T00:00:00');
+      if (!isNaN(d.getTime())) return d.getFullYear();
+    }
+    return 2026;
+  });
+
+  const [viewMonth, setViewMonth] = useState<number>(() => {
+    if (value && value.includes('-')) {
+      const d = new Date(value + 'T00:00:00');
+      if (!isNaN(d.getTime())) return d.getMonth();
+    }
+    return 0;
+  });
+
+  const openPicker = () => {
+    if (value && value.includes('-')) {
+      const d = new Date(value + 'T00:00:00');
+      if (!isNaN(d.getTime())) {
+        setViewYear(d.getFullYear());
+        setViewMonth(d.getMonth());
+      }
+    }
+    setIsOpen(true);
+  };
 
   const prevMonth = () => {
     if (viewMonth === 0) {
@@ -83,11 +105,11 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
       <div
         role="button"
         tabIndex={0}
-        onClick={() => setIsOpen(true)}
+        onClick={openPicker}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            setIsOpen(true);
+            openPicker();
           }
         }}
         className={`glass-input rounded-2xl flex items-center justify-between px-4 py-3.5 gap-3 cursor-pointer select-none group transition-all ${

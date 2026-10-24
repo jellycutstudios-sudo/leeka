@@ -73,7 +73,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
 
 
   const ceremoniesList =
-    data.events.map((e) => e.type).join(', ') || 'Wedding / Muhurtham';
+    data.events.map((e) => e.type).join(', ') || 'None selected';
 
   const deliverablesList =
     (data.deliverables || [])

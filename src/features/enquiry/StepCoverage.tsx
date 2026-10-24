@@ -55,6 +55,9 @@ const DELIVERABLE_ICONS: Record<string, React.ReactNode> = {
   full_video: <Tv className="w-3.5 h-3.5" />,
 };
 
+const createEventId = (prefix: string): string =>
+  `${prefix}-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
+
 export const StepCoverage: React.FC<StepCoverageProps> = ({
   data,
   onChange,
@@ -100,7 +103,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
       updated = [
         ...data.events,
         {
-          id: `event-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+          id: createEventId('event'),
           type: label,
           date: data.primaryDate || '',
           location: data.primaryLocation || '',
@@ -124,7 +127,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
       events: [
         ...data.events,
         {
-          id: `custom-${Date.now()}`,
+          id: createEventId('custom'),
           type: trimmed,
           date: data.primaryDate || '',
           location: data.primaryLocation || '',

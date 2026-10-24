@@ -83,7 +83,7 @@ export function buildWhatsAppMessage(data: EnquiryData): string {
       lines.push(`• ${ev.type}${extraInfo}`);
     });
   } else {
-    lines.push('• Wedding / Muhurtham');
+    lines.push('• To be discussed');
   }
   lines.push('');
 

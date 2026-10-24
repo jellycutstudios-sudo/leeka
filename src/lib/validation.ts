@@ -10,7 +10,7 @@ export const step1Schema = z.object({
   whatsappNumber: z
     .string()
     .trim()
-    .transform((val) => val.replace(/[\s\-\(\)]/g, ''))
+    .transform((val) => val.replace(/[\s\-()]/g, ''))
     .refine((val) => /^\d{7,15}$/.test(val), {
       message: 'Please enter a valid contact number (7 to 15 digits)',
     }),
