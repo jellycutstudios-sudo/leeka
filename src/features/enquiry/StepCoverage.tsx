@@ -96,7 +96,6 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
     let updated: EventItem[];
 
     if (exists) {
-      if (data.events.length <= 1) return;
       updated = data.events.filter((e) => e.type.toLowerCase() !== label.toLowerCase());
     } else {
       updated = [
@@ -114,14 +113,20 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
     if (errors.events) setErrors((prev) => ({ ...prev, events: undefined }));
   };
 
+  const removeCustomEvent = (id: string) => {
+    const updated = data.events.filter((e) => e.id !== id);
+    onChange({ events: updated });
+  };
+
   const addCustom = () => {
-    if (!customTitle.trim()) return;
+    const trimmed = customTitle.trim();
+    if (!trimmed) return;
     onChange({
       events: [
         ...data.events,
         {
           id: `custom-${Date.now()}`,
-          type: customTitle.trim(),
+          type: trimmed,
           date: data.primaryDate || '',
           location: data.primaryLocation || '',
         },
@@ -129,6 +134,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
     });
     setCustomTitle('');
     setShowCustomInput(false);
+    if (errors.events) setErrors((prev) => ({ ...prev, events: undefined }));
   };
 
   const toggleDeliverable = (id: string) => {
@@ -186,7 +192,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                   className={`flex items-center justify-between py-3.5 px-3.5 sm:px-4 rounded-xl text-[13px] sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                     active
                       ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] shadow-xs'
-                      : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
+                      : 'bg-white border-[1.5px] border-[#C8B8A6] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1] shadow-2xs'
                   }`}
                 >
                   <div className="flex items-center gap-2 min-w-0">
@@ -222,7 +228,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
               .map((custom) => (
                 <div
                   key={custom.id}
-                  className="col-span-2 flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-xl text-[13px] sm:text-sm font-semibold bg-[#F6EDE4] border border-[#8E6D52] text-[#140E0A] shadow-2xs"
+                  className="col-span-2 flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-xl text-[13px] sm:text-sm font-semibold bg-[#F6EDE4] border-[1.5px] border-[#8E6D52] text-[#140E0A] shadow-2xs"
                 >
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
@@ -230,8 +236,12 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                   </div>
                   <button
                     type="button"
-                    onClick={() => toggleEvent(custom.type)}
-                    className="text-[#8E6D52] hover:text-[#5C4532] text-xs font-bold px-1.5 py-0.5 cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeCustomEvent(custom.id);
+                    }}
+                    className="w-7 h-7 flex items-center justify-center rounded-lg text-[#8E6D52] hover:text-white hover:bg-[#8E6D52] transition-colors text-sm font-bold cursor-pointer"
+                    title={`Remove ${custom.type}`}
                   >
                     ✕
                   </button>
@@ -242,7 +252,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
             <button
               type="button"
               onClick={() => setShowCustomInput(!showCustomInput)}
-              className="col-span-2 flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-xl text-xs sm:text-[13px] font-semibold bg-white border-1.5 border-dashed border-[#CBB8A7] text-[#5C4532] hover:border-[#8E6D52] hover:bg-[#FAF6F1] transition-all cursor-pointer shadow-2xs"
+              className="col-span-2 flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-xl text-xs sm:text-[13px] font-semibold bg-white border-[1.5px] border-dashed border-[#BFA995] text-[#5C4532] hover:border-[#8E6D52] hover:bg-[#FAF6F1] transition-all cursor-pointer shadow-2xs"
             >
               <div className="flex items-center gap-2 min-w-0">
                 <Plus className="w-3.5 h-3.5 text-[#8E6D52] shrink-0" />
@@ -254,7 +264,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
 
           {/* Expandable Custom Event Input */}
           {showCustomInput && (
-            <div className="mt-1 p-2.5 bg-white rounded-xl border-1.5 border-[#D5C5B5] flex items-center gap-2 shadow-xs">
+            <div className="mt-1 p-2.5 bg-white rounded-xl border-[1.5px] border-[#8E6D52] flex items-center gap-2 shadow-xs">
               <input
                 type="text"
                 placeholder="Custom ceremony name..."
@@ -318,7 +328,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                     className={`flex items-center justify-between py-3.5 px-3.5 sm:px-4 rounded-xl text-[13px] sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                       active
                         ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] shadow-xs'
-                        : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
+                        : 'bg-white border-[1.5px] border-[#C8B8A6] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1] shadow-2xs'
                     }`}
                   >
                     <div className="flex items-center gap-2 min-w-0">
@@ -362,7 +372,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                     } ${
                       active
                         ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] shadow-xs'
-                        : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
+                        : 'bg-white border-[1.5px] border-[#C8B8A6] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1] shadow-2xs'
                     }`}
                   >
                     <div className="flex items-center gap-2 min-w-0">

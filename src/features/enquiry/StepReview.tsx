@@ -122,7 +122,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
             <button
               type="button"
               onClick={() => onEditStep(1)}
-              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
+              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-[1.5px] border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
             >
               Edit
             </button>
@@ -140,7 +140,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
             <button
               type="button"
               onClick={() => onEditStep(1)}
-              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
+              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-[1.5px] border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
             >
               Edit
             </button>
@@ -160,7 +160,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
             <button
               type="button"
               onClick={() => onEditStep(1)}
-              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
+              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-[1.5px] border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
             >
               Edit
             </button>
@@ -180,7 +180,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
             <button
               type="button"
               onClick={() => onEditStep(1)}
-              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
+              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-[1.5px] border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
             >
               Edit
             </button>
@@ -198,7 +198,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
             <button
               type="button"
               onClick={() => onEditStep(2)}
-              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
+              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-[1.5px] border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
             >
               Edit
             </button>
@@ -217,7 +217,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
               <button
                 type="button"
                 onClick={() => onEditStep(2)}
-                className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
+                className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-[1.5px] border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
               >
                 Edit
               </button>
@@ -250,7 +250,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
                   className={`flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                     active
                       ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] font-bold shadow-xs'
-                      : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
+                      : 'bg-white border-[1.5px] border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">

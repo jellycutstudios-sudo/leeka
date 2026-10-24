@@ -173,7 +173,7 @@ export const StepContact: React.FC<StepContactProps> = ({
               Coverage scope
             </label>
             <div
-              className="bg-[#ECE2D5] p-1 rounded-2xl flex items-center border-1.5 border-[#D5C5B5]"
+              className="bg-[#ECE2D5] p-1 rounded-2xl flex items-center border-[1.5px] border-[#D5C5B5]"
               role="radiogroup"
               aria-label="Coverage scope"
             >
