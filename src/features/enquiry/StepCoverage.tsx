@@ -146,16 +146,16 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
         {/* Header with Botanical Art */}
         <div className="flex items-start justify-between gap-3 pt-1">
           <div className="flex-1 pr-1">
-            <h2 className="font-editorial text-2xl sm:text-3xl font-medium tracking-tight text-[#2D251E] leading-tight">
+            <h2 className="font-editorial text-2xl sm:text-3xl font-medium tracking-tight text-[#1A140F] leading-tight">
               Coverage
             </h2>
-            <p className="text-xs sm:text-[13px] text-[#786C60] mt-1.5 leading-relaxed font-sans">
+            <p className="text-xs sm:text-[13px] text-[#4D4034] mt-1.5 leading-relaxed font-sans">
               Choose what you&apos;d like us to capture.
             </p>
           </div>
 
           <div className="w-12 h-12 shrink-0 opacity-80 flex items-center justify-center">
-            <Flower2 className="w-8 h-8 text-[#A88669]/60 stroke-[1.5]" />
+            <Flower2 className="w-8 h-8 text-[#8E6D52] stroke-[1.8]" />
           </div>
         </div>
 
@@ -163,16 +163,16 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
         <div className="flex flex-col gap-2 mt-1">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#9C7C5F]" />
-              <span className="text-xs font-semibold text-[#2D251E] tracking-wide">
+              <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
+              <span className="text-xs font-bold text-[#1A140F] tracking-wide">
                 Select ceremonies
               </span>
             </div>
-            <span className="text-[10px] uppercase font-semibold text-[#8E6D52] bg-[#8E6D52]/10 px-2 py-0.5 rounded-full tracking-wider">
+            <span className="text-[10px] uppercase font-bold text-[#63452B] bg-[#8E6D52]/15 border border-[#8E6D52]/30 px-2.5 py-0.5 rounded-full tracking-wider">
               Select multiple
             </span>
           </div>
-          <span className="text-[11px] text-[#8C7E72] -mt-0.5 pl-5">
+          <span className="text-[11px] text-[#524438] -mt-0.5 pl-5">
             Choose all celebrations to be covered
           </span>
 
@@ -186,12 +186,12 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                   onClick={() => toggleEvent(item.label)}
                   className={`flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                     active
-                      ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#3E3126] font-semibold shadow-xs ring-1 ring-[#A88669]/20'
-                      : 'bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white/95'
+                      ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] font-bold shadow-xs ring-1 ring-[#8E6D52]/20'
+                      : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#8C7E72]'}`}>
+                    <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
                       {item.icon}
                     </span>
                     <span className="truncate">{item.label}</span>
@@ -202,7 +202,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                     className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
                       active
                         ? 'bg-[#8E6D52] text-white shadow-2xs'
-                        : 'border border-[#C8BAAB] bg-white/60'
+                        : 'border-2 border-[#B4A08E] bg-white'
                     }`}
                   >
                     {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}
@@ -215,19 +215,19 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
             <button
               type="button"
               onClick={() => setShowCustomInput(!showCustomInput)}
-              className="flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white/95 transition-all cursor-pointer"
+              className="flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1] transition-all cursor-pointer"
             >
               <div className="flex items-center gap-2.5 min-w-0">
-                <MoreHorizontal className="w-3.5 h-3.5 text-[#8C7E72] shrink-0" />
+                <MoreHorizontal className="w-3.5 h-3.5 text-[#6E533C] shrink-0" />
                 <span>Custom</span>
               </div>
-              <Plus className="w-3.5 h-3.5 text-[#A19588] shrink-0 ml-1" />
+              <Plus className="w-3.5 h-3.5 text-[#8E6D52] shrink-0 ml-1" />
             </button>
           </div>
 
           {/* Expandable Custom Event Input */}
           {showCustomInput && (
-            <div className="mt-2 p-3 bg-white/80 rounded-2xl border border-[#E6DDD2] flex items-center gap-2">
+            <div className="mt-2 p-3 bg-white rounded-2xl border-1.5 border-[#D5C5B5] flex items-center gap-2 shadow-xs">
               <input
                 type="text"
                 placeholder="Custom ceremony name..."
@@ -239,12 +239,12 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                     addCustom();
                   }
                 }}
-                className="flex-1 bg-transparent text-xs text-[#2D251E] outline-none"
+                className="flex-1 bg-transparent text-xs text-[#1A140F] placeholder:text-[#918171] outline-none"
               />
               <button
                 type="button"
                 onClick={addCustom}
-                className="px-3 py-1.5 bg-[#8E6D52] text-white rounded-xl text-xs font-medium cursor-pointer"
+                className="px-3.5 py-1.5 bg-[#8E6D52] hover:bg-[#73543B] text-white rounded-xl text-xs font-semibold cursor-pointer shadow-2xs"
               >
                 Add
               </button>
@@ -252,7 +252,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
           )}
 
           {errors.events && (
-            <p className="text-[11px] text-rose-700 font-medium pl-1">{errors.events}</p>
+            <p className="text-[11px] text-rose-700 font-semibold pl-1">{errors.events}</p>
           )}
         </div>
 
@@ -261,23 +261,23 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
           <div>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#9C7C5F]" />
-                <label className="text-xs font-semibold text-[#2D251E] tracking-wide">
+                <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
+                <label className="text-xs font-bold text-[#1A140F] tracking-wide">
                   Services & Deliverables
                 </label>
               </div>
-              <span className="text-[10px] uppercase font-semibold text-[#8E6D52] bg-[#8E6D52]/10 px-2 py-0.5 rounded-full tracking-wider">
+              <span className="text-[10px] uppercase font-bold text-[#63452B] bg-[#8E6D52]/15 border border-[#8E6D52]/30 px-2.5 py-0.5 rounded-full tracking-wider">
                 Select multiple
               </span>
             </div>
-            <p className="text-[11px] text-[#8C7E72] pl-5 mt-0.5">
+            <p className="text-[11px] text-[#524438] pl-5 mt-0.5">
               Choose what you&apos;d like included.
             </p>
           </div>
 
           {/* Group A: Photography & Wedding Album */}
           <div className="flex flex-col gap-1.5">
-            <span className="text-[10px] font-semibold text-[#8C7E72] tracking-wider uppercase pl-0.5">
+            <span className="text-[10px] font-bold text-[#5C4532] tracking-wider uppercase pl-0.5">
               Photography & Keepsake
             </span>
             <div className="grid grid-cols-2 gap-2.5">
@@ -290,12 +290,12 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                     onClick={() => toggleDeliverable(item.id)}
                     className={`flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                       active
-                        ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#3E3126] font-semibold shadow-xs ring-1 ring-[#A88669]/20'
-                        : 'bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white'
+                        ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] font-bold shadow-xs ring-1 ring-[#8E6D52]/20'
+                        : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#8C7E72]'}`}>
+                      <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
                         {DELIVERABLE_ICONS[item.id] || <Sparkles className="w-3.5 h-3.5" />}
                       </span>
                       <span className="truncate">{item.label}</span>
@@ -306,7 +306,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                       className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
                         active
                           ? 'bg-[#8E6D52] text-white shadow-2xs'
-                          : 'border border-[#C8BAAB] bg-white/60'
+                          : 'border-2 border-[#B4A08E] bg-white'
                       }`}
                     >
                       {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}
@@ -319,7 +319,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
 
           {/* Group B: Films & Reels */}
           <div className="flex flex-col gap-1.5">
-            <span className="text-[10px] font-semibold text-[#8C7E72] tracking-wider uppercase pl-0.5">
+            <span className="text-[10px] font-bold text-[#5C4532] tracking-wider uppercase pl-0.5">
               Films & Reels
             </span>
             <div className="grid grid-cols-2 gap-2.5">
@@ -332,12 +332,12 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                     onClick={() => toggleDeliverable(item.id)}
                     className={`flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] last:col-span-2 ${
                       active
-                        ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#3E3126] font-semibold shadow-xs ring-1 ring-[#A88669]/20'
-                        : 'bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white'
+                        ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] font-bold shadow-xs ring-1 ring-[#8E6D52]/20'
+                        : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#8C7E72]'}`}>
+                      <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
                         {DELIVERABLE_ICONS[item.id] || <Sparkles className="w-3.5 h-3.5" />}
                       </span>
                       <span className="truncate">{item.label}</span>
@@ -348,7 +348,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                       className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
                         active
                           ? 'bg-[#8E6D52] text-white shadow-2xs'
-                          : 'border border-[#C8BAAB] bg-white/60'
+                          : 'border-2 border-[#B4A08E] bg-white'
                       }`}
                     >
                       {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}

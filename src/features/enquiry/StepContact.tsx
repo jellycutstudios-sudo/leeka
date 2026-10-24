@@ -65,15 +65,15 @@ export const StepContact: React.FC<StepContactProps> = ({
         {/* Header with Gold Rings Accent */}
         <div className="flex items-start justify-between gap-3 pt-1">
           <div className="flex-1 pr-1">
-            <h2 className="font-editorial text-2xl sm:text-3xl font-medium tracking-tight text-[#2D251E] leading-tight">
+            <h2 className="font-editorial text-2xl sm:text-3xl font-medium tracking-tight text-[#1A140F] leading-tight">
               Contact & Occasion
             </h2>
-            <p className="text-xs sm:text-[13px] text-[#786C60] mt-1.5 leading-relaxed font-sans">
+            <p className="text-xs sm:text-[13px] text-[#4D4034] mt-1.5 leading-relaxed font-sans">
               Let&apos;s start with a few details about you and your special day.
             </p>
           </div>
 
-          <div className="relative w-14 h-14 shrink-0 rounded-2xl overflow-hidden shadow-sm border border-[#EADBCE]/80 bg-[#FAF6F0]">
+          <div className="relative w-14 h-14 shrink-0 rounded-2xl overflow-hidden shadow-sm border border-[#D5C5B5] bg-[#FAF6F0]">
             <img
               src="/rings.jpg"
               alt="Wedding rings"
@@ -88,7 +88,7 @@ export const StepContact: React.FC<StepContactProps> = ({
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="contactName"
-              className="text-xs font-medium text-[#574D43] pl-1 tracking-wide"
+              className="text-xs font-bold text-[#221810] pl-1 tracking-wide"
             >
               Full name
             </label>
@@ -97,7 +97,7 @@ export const StepContact: React.FC<StepContactProps> = ({
                 errors.contactName ? 'border-rose-400 bg-rose-50/30' : ''
               }`}
             >
-              <User className="w-4 h-4 text-[#8C7E72] shrink-0" />
+              <User className="w-4 h-4 text-[#6B5542] shrink-0" />
               <input
                 type="text"
                 id="contactName"
@@ -108,11 +108,11 @@ export const StepContact: React.FC<StepContactProps> = ({
                   onChange({ contactName: e.target.value });
                   if (errors.contactName) setErrors((prev) => ({ ...prev, contactName: undefined }));
                 }}
-                className="w-full bg-transparent text-sm text-[#2D251E] placeholder:text-[#A19588] outline-none"
+                className="w-full bg-transparent text-sm text-[#140E0A] font-medium placeholder:text-[#918171] outline-none"
               />
             </div>
             {errors.contactName && (
-              <p className="text-[11px] text-rose-700 font-medium pl-1">{errors.contactName}</p>
+              <p className="text-[11px] text-rose-700 font-semibold pl-1">{errors.contactName}</p>
             )}
           </div>
 
@@ -120,7 +120,7 @@ export const StepContact: React.FC<StepContactProps> = ({
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="whatsappNumber"
-              className="text-xs font-medium text-[#574D43] pl-1 tracking-wide"
+              className="text-xs font-bold text-[#221810] pl-1 tracking-wide"
             >
               Contact number
             </label>
@@ -130,12 +130,12 @@ export const StepContact: React.FC<StepContactProps> = ({
               }`}
             >
               {/* Country Code Pill */}
-              <div className="relative flex items-center border-r border-[#E6DDD2] pr-2 shrink-0">
+              <div className="relative flex items-center border-r border-[#D5C5B5] pr-2 shrink-0">
                 <select
                   aria-label="Country calling code"
                   value={data.countryCode}
                   onChange={(e) => onChange({ countryCode: e.target.value })}
-                  className="bg-transparent text-xs sm:text-sm font-medium text-[#2D251E] outline-none cursor-pointer appearance-none pr-4"
+                  className="bg-transparent text-xs sm:text-sm font-semibold text-[#140E0A] outline-none cursor-pointer appearance-none pr-4"
                 >
                   {COUNTRY_CODES.map((item) => (
                     <option key={item.code} value={item.code}>
@@ -143,7 +143,7 @@ export const StepContact: React.FC<StepContactProps> = ({
                     </option>
                   ))}
                 </select>
-                <ChevronRight className="w-3 h-3 text-[#8C7E72] absolute right-0 pointer-events-none transform rotate-90" />
+                <ChevronRight className="w-3 h-3 text-[#6B5542] absolute right-0 pointer-events-none transform rotate-90" />
               </div>
 
               {/* Number Input */}
@@ -157,23 +157,23 @@ export const StepContact: React.FC<StepContactProps> = ({
                   onChange({ whatsappNumber: e.target.value });
                   if (errors.whatsappNumber) setErrors((prev) => ({ ...prev, whatsappNumber: undefined }));
                 }}
-                className="w-full bg-transparent text-sm text-[#2D251E] placeholder:text-[#A19588] outline-none"
+                className="w-full bg-transparent text-sm text-[#140E0A] font-medium placeholder:text-[#918171] outline-none"
               />
 
-              <Phone className="w-4 h-4 text-[#8C7E72] shrink-0" />
+              <Phone className="w-4 h-4 text-[#6B5542] shrink-0" />
             </div>
             {errors.whatsappNumber && (
-              <p className="text-[11px] text-rose-700 font-medium pl-1">{errors.whatsappNumber}</p>
+              <p className="text-[11px] text-rose-700 font-semibold pl-1">{errors.whatsappNumber}</p>
             )}
           </div>
 
           {/* Coverage Scope Segmented Control */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-medium text-[#574D43] pl-1 tracking-wide">
+            <label className="text-xs font-bold text-[#221810] pl-1 tracking-wide">
               Coverage scope
             </label>
             <div
-              className="bg-[#EFE9DF]/80 p-1 rounded-2xl flex items-center border border-[#E4DCcf]"
+              className="bg-[#ECE2D5] p-1 rounded-2xl flex items-center border-1.5 border-[#D5C5B5]"
               role="radiogroup"
               aria-label="Coverage scope"
             >
@@ -192,10 +192,10 @@ export const StepContact: React.FC<StepContactProps> = ({
                     role="radio"
                     aria-checked={isSelected}
                     onClick={() => handleCoverageSelect(option.id)}
-                    className={`flex-1 py-2 text-xs sm:text-sm font-medium rounded-xl transition-all duration-200 cursor-pointer select-none text-center ${
+                    className={`flex-1 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all duration-200 cursor-pointer select-none text-center ${
                       isSelected
-                        ? 'bg-gradient-to-r from-[#9C7C5F] to-[#826246] text-white shadow-xs'
-                        : 'text-[#6B5E52] hover:text-[#2D251E]'
+                        ? 'bg-gradient-to-r from-[#8E6D52] to-[#715239] text-white shadow-xs'
+                        : 'text-[#423326] hover:text-[#1A140F]'
                     }`}
                   >
                     {option.label}
@@ -209,7 +209,7 @@ export const StepContact: React.FC<StepContactProps> = ({
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="primaryDate"
-              className="text-xs font-medium text-[#574D43] pl-1 tracking-wide"
+              className="text-xs font-bold text-[#221810] pl-1 tracking-wide"
             >
               Wedding date
             </label>
@@ -229,7 +229,7 @@ export const StepContact: React.FC<StepContactProps> = ({
               }}
             />
             {errors.primaryDate && (
-              <p className="text-[11px] text-rose-700 font-medium pl-1">{errors.primaryDate}</p>
+              <p className="text-[11px] text-rose-700 font-semibold pl-1">{errors.primaryDate}</p>
             )}
           </div>
 
@@ -237,7 +237,7 @@ export const StepContact: React.FC<StepContactProps> = ({
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="primaryLocation"
-              className="text-xs font-medium text-[#574D43] pl-1 tracking-wide"
+              className="text-xs font-bold text-[#221810] pl-1 tracking-wide"
             >
               City / Venue
             </label>
@@ -247,7 +247,7 @@ export const StepContact: React.FC<StepContactProps> = ({
               }`}
             >
               <div className="flex items-center gap-3 flex-1">
-                <MapPin className="w-4 h-4 text-[#8C7E72] shrink-0" />
+                <MapPin className="w-4 h-4 text-[#6B5542] shrink-0" />
                 <input
                   type="text"
                   id="primaryLocation"

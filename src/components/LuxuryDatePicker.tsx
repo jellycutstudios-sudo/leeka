@@ -95,10 +95,10 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
         }`}
       >
         <div className="flex items-center gap-3 flex-1 min-w-0">
-          <CalendarIcon className="w-4 h-4 text-[#8C7E72] shrink-0 group-hover:text-[#8E6D52] transition-colors" />
+          <CalendarIcon className="w-4 h-4 text-[#6B5542] shrink-0 group-hover:text-[#8E6D52] transition-colors" />
           <span
             className={`text-sm truncate ${
-              value ? 'text-[#2D251E] font-medium' : 'text-[#A19588]'
+              value ? 'text-[#140E0A] font-semibold' : 'text-[#918171]'
             }`}
           >
             {value ? formatDisplayDate(value) : placeholder}
@@ -106,7 +106,7 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
         </div>
 
         <ChevronDown
-          className={`w-4 h-4 text-[#8C7E72] shrink-0 transition-transform duration-200 ${
+          className={`w-4 h-4 text-[#6B5542] shrink-0 transition-transform duration-200 ${
             isOpen ? 'transform rotate-180 text-[#8E6D52]' : ''
           }`}
         />

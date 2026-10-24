@@ -90,31 +90,31 @@ export const StepReview: React.FC<StepReviewProps> = ({
         {/* Header with Dried Botanical Art */}
         <div className="flex items-start justify-between gap-3 pt-1">
           <div className="flex-1 pr-1">
-            <h2 className="font-editorial text-2xl sm:text-3xl font-medium tracking-tight text-[#2D251E] leading-tight">
+            <h2 className="font-editorial text-2xl sm:text-3xl font-medium tracking-tight text-[#1A140F] leading-tight">
               Review
             </h2>
-            <p className="text-xs sm:text-[13px] text-[#786C60] mt-1.5 leading-relaxed font-sans">
+            <p className="text-xs sm:text-[13px] text-[#4D4034] mt-1.5 leading-relaxed font-sans">
               Here&apos;s a summary of your enquiry. You can edit any detail before sending.
             </p>
           </div>
 
           <div className="w-12 h-12 shrink-0 opacity-80 flex items-center justify-center">
-            <Flower2 className="w-8 h-8 text-[#A88669]/60 stroke-[1.5]" />
+            <Flower2 className="w-8 h-8 text-[#8E6D52] stroke-[1.8]" />
           </div>
         </div>
 
         {/* Summary Rows List */}
-        <div className="flex flex-col divide-y divide-[#EAE3D9]/70 text-xs sm:text-sm">
+        <div className="flex flex-col divide-y divide-[#E2D5C7] text-xs sm:text-sm">
           {/* Row 1: Contact */}
           <div className="py-2.5 flex items-center justify-between gap-3">
             <div className="flex items-start gap-3 flex-1 min-w-0">
-              <User className="w-4 h-4 text-[#8C7E72] shrink-0 mt-0.5" />
+              <User className="w-4 h-4 text-[#6B5542] shrink-0 mt-0.5" />
               <div className="min-w-0">
-                <span className="text-[11px] text-[#8C7E72] block">Contact</span>
-                <p className="font-medium text-[#2D251E] truncate">
+                <span className="text-[11px] text-[#5C4532] font-semibold block">Contact</span>
+                <p className="font-semibold text-[#140E0A] truncate">
                   {data.contactName || 'Not specified'}
                 </p>
-                <p className="text-[11px] text-[#786C60]">
+                <p className="text-[11px] text-[#4D4034] font-medium">
                   {data.countryCode} {data.whatsappNumber || 'Not specified'}
                 </p>
               </div>
@@ -122,7 +122,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
             <button
               type="button"
               onClick={() => onEditStep(1)}
-              className="px-2.5 py-1 text-[11px] font-medium text-[#6B5E52] bg-white/70 hover:bg-white border border-[#E6DDD2] rounded-lg transition-colors cursor-pointer shrink-0"
+              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
             >
               Edit
             </button>
@@ -131,16 +131,16 @@ export const StepReview: React.FC<StepReviewProps> = ({
           {/* Row 2: Coverage scope */}
           <div className="py-2.5 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 flex-1 min-w-0">
-              <Users className="w-4 h-4 text-[#8C7E72] shrink-0" />
+              <Users className="w-4 h-4 text-[#6B5542] shrink-0" />
               <div className="min-w-0">
-                <span className="text-[11px] text-[#8C7E72] block">Coverage scope</span>
-                <p className="font-medium text-[#2D251E]">{coverageScopeLabel}</p>
+                <span className="text-[11px] text-[#5C4532] font-semibold block">Coverage scope</span>
+                <p className="font-semibold text-[#140E0A]">{coverageScopeLabel}</p>
               </div>
             </div>
             <button
               type="button"
               onClick={() => onEditStep(1)}
-              className="px-2.5 py-1 text-[11px] font-medium text-[#6B5E52] bg-white/70 hover:bg-white border border-[#E6DDD2] rounded-lg transition-colors cursor-pointer shrink-0"
+              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
             >
               Edit
             </button>
@@ -149,10 +149,10 @@ export const StepReview: React.FC<StepReviewProps> = ({
           {/* Row 3: Wedding date */}
           <div className="py-2.5 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 flex-1 min-w-0">
-              <Calendar className="w-4 h-4 text-[#8C7E72] shrink-0" />
+              <Calendar className="w-4 h-4 text-[#6B5542] shrink-0" />
               <div className="min-w-0">
-                <span className="text-[11px] text-[#8C7E72] block">Wedding date</span>
-                <p className="font-medium text-[#2D251E]">
+                <span className="text-[11px] text-[#5C4532] font-semibold block">Wedding date</span>
+                <p className="font-semibold text-[#140E0A]">
                   {data.primaryDate ? formatDisplayDate(data.primaryDate) : 'Date TBD'}
                 </p>
               </div>
@@ -160,7 +160,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
             <button
               type="button"
               onClick={() => onEditStep(1)}
-              className="px-2.5 py-1 text-[11px] font-medium text-[#6B5E52] bg-white/70 hover:bg-white border border-[#E6DDD2] rounded-lg transition-colors cursor-pointer shrink-0"
+              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
             >
               Edit
             </button>
@@ -169,10 +169,10 @@ export const StepReview: React.FC<StepReviewProps> = ({
           {/* Row 4: City / Venue */}
           <div className="py-2.5 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 flex-1 min-w-0">
-              <MapPin className="w-4 h-4 text-[#8C7E72] shrink-0" />
+              <MapPin className="w-4 h-4 text-[#6B5542] shrink-0" />
               <div className="min-w-0">
-                <span className="text-[11px] text-[#8C7E72] block">City / Venue</span>
-                <p className="font-medium text-[#2D251E] truncate">
+                <span className="text-[11px] text-[#5C4532] font-semibold block">City / Venue</span>
+                <p className="font-semibold text-[#140E0A] truncate">
                   {data.primaryLocation || 'Not specified'}
                 </p>
               </div>
@@ -180,7 +180,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
             <button
               type="button"
               onClick={() => onEditStep(1)}
-              className="px-2.5 py-1 text-[11px] font-medium text-[#6B5E52] bg-white/70 hover:bg-white border border-[#E6DDD2] rounded-lg transition-colors cursor-pointer shrink-0"
+              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
             >
               Edit
             </button>
@@ -189,37 +189,35 @@ export const StepReview: React.FC<StepReviewProps> = ({
           {/* Row 5: Ceremonies */}
           <div className="py-2.5 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 flex-1 min-w-0">
-              <Sparkles className="w-4 h-4 text-[#8C7E72] shrink-0" />
+              <Sparkles className="w-4 h-4 text-[#6B5542] shrink-0" />
               <div className="min-w-0">
-                <span className="text-[11px] text-[#8C7E72] block">Ceremonies</span>
-                <p className="font-medium text-[#2D251E] truncate">{ceremoniesList}</p>
+                <span className="text-[11px] text-[#5C4532] font-semibold block">Ceremonies</span>
+                <p className="font-semibold text-[#140E0A] truncate">{ceremoniesList}</p>
               </div>
             </div>
             <button
               type="button"
               onClick={() => onEditStep(2)}
-              className="px-2.5 py-1 text-[11px] font-medium text-[#6B5E52] bg-white/70 hover:bg-white border border-[#E6DDD2] rounded-lg transition-colors cursor-pointer shrink-0"
+              className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
             >
               Edit
             </button>
           </div>
 
-
-
-          {/* Row 8: Deliverables & Reels (if any selected) */}
+          {/* Row 6: Deliverables & Reels (if any selected) */}
           {data.deliverables && data.deliverables.length > 0 && (
             <div className="py-2.5 flex items-center justify-between gap-3">
               <div className="flex items-center gap-3 flex-1 min-w-0">
-                <Film className="w-4 h-4 text-[#8C7E72] shrink-0" />
+                <Film className="w-4 h-4 text-[#6B5542] shrink-0" />
                 <div className="min-w-0">
-                  <span className="text-[11px] text-[#8C7E72] block">Services & Deliverables</span>
-                  <p className="font-medium text-[#2D251E] truncate">{deliverablesList}</p>
+                  <span className="text-[11px] text-[#5C4532] font-semibold block">Services & Deliverables</span>
+                  <p className="font-semibold text-[#140E0A] truncate">{deliverablesList}</p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => onEditStep(2)}
-                className="px-2.5 py-1 text-[11px] font-medium text-[#6B5E52] bg-white/70 hover:bg-white border border-[#E6DDD2] rounded-lg transition-colors cursor-pointer shrink-0"
+                className="px-3 py-1 text-[11px] font-semibold text-[#221810] bg-white hover:bg-[#FAF6F1] border-1.5 border-[#D5C5B5] hover:border-[#8E6D52] rounded-lg transition-colors cursor-pointer shrink-0 shadow-2xs"
               >
                 Edit
               </button>
@@ -231,12 +229,12 @@ export const StepReview: React.FC<StepReviewProps> = ({
         <div className="border-t border-[#EAE3D9] pt-3 flex flex-col gap-2">
           <div>
             <div className="flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#9C7C5F]" />
-              <span className="text-xs font-semibold text-[#2D251E] tracking-wide">
+              <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
+              <span className="text-xs font-bold text-[#1A140F] tracking-wide">
                 Add creative extras (optional)
               </span>
             </div>
-            <p className="text-[11px] text-[#8C7E72] pl-5">
+            <p className="text-[11px] text-[#524438] pl-5">
               Make your celebration even more memorable.
             </p>
           </div>
@@ -249,14 +247,14 @@ export const StepReview: React.FC<StepReviewProps> = ({
                   key={item.id}
                   type="button"
                   onClick={() => toggleExtra(item.id)}
-                  className={`flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-2xl text-xs font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                  className={`flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                     active
-                      ? 'bg-gradient-to-r from-[#EEDFD3] to-[#DFCEBF] border border-[#CBB8A7] text-[#3E3126] font-semibold shadow-xs'
-                      : 'bg-white/70 border border-[#E6DDD2] text-[#6B5E52] hover:bg-white'
+                      ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] font-bold shadow-xs'
+                      : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#8C7E72]'}`}>
+                    <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
                       {item.icon}
                     </span>
                     <span className="truncate">{item.label}</span>
@@ -267,7 +265,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
                     className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
                       active
                         ? 'bg-[#8E6D52] text-white shadow-2xs'
-                        : 'border border-[#C8BAAB] bg-white/60'
+                        : 'border-2 border-[#B4A08E] bg-white'
                     }`}
                   >
                     {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}

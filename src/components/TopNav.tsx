@@ -37,22 +37,22 @@ export const TopNav: React.FC<TopNavProps> = ({
         </div>
 
         {/* Title */}
-        <h1 className="font-editorial text-lg sm:text-xl font-medium tracking-wide text-[#2D251E]">
+        <h1 className="font-editorial text-lg sm:text-xl font-semibold tracking-wide text-[#1A140F]">
           Wedding Booking
         </h1>
 
         {/* Step indicator */}
         <div className="w-20 text-right">
-          <span className="text-xs font-serif italic text-[#75695E]">
+          <span className="text-xs font-serif italic text-[#5C4D3E] font-medium">
             Step {currentStep} of {totalSteps}
           </span>
         </div>
       </div>
 
       {/* Sleek thin progress line */}
-      <div className="w-full h-[2.5px] bg-[#E8E0D5] rounded-full overflow-hidden">
+      <div className="w-full h-[2.5px] bg-[#DDD0C2] rounded-full overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-[#A88669] to-[#8C6C50] rounded-full transition-all duration-300 ease-out"
+          className="h-full bg-gradient-to-r from-[#8E6D52] to-[#6E4F36] rounded-full transition-all duration-300 ease-out"
           style={{ width: `${progressPercent}%` }}
         />
       </div>
