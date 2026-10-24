@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import {
   Sparkles,
-  SlidersHorizontal,
   Users,
   Video,
   ChevronRight,
-  Trash2,
-  Calendar,
-  MapPin,
   Gem,
   Music,
   Leaf,
@@ -41,7 +37,6 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
   onNext,
 }) => {
   const [errors, setErrors] = useState<Step2Errors>({});
-  const [showOverrides, setShowOverrides] = useState(false);
   const [showCustomInput, setShowCustomInput] = useState(false);
   const [customTitle, setCustomTitle] = useState('');
 
@@ -112,16 +107,6 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
     setShowCustomInput(false);
   };
 
-  const updateEventField = (id: string, field: 'date' | 'location', val: string) => {
-    onChange({
-      events: data.events.map((e) => (e.id === id ? { ...e, [field]: val } : e)),
-    });
-  };
-
-  const removeEvent = (id: string) => {
-    if (data.events.length <= 1) return;
-    onChange({ events: data.events.filter((e) => e.id !== id) });
-  };
 
   const toggleDeliverable = (id: string) => {
     const current = data.deliverables || [];
@@ -224,78 +209,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
           )}
         </div>
 
-        {/* Section 2: Per-event Overrides */}
-        <div className="border-t border-[#EAE3D9] pt-3">
-          <button
-            type="button"
-            onClick={() => setShowOverrides(!showOverrides)}
-            className="w-full flex items-center justify-between text-left py-1 cursor-pointer group select-none"
-          >
-            <div className="flex items-center gap-3">
-              <SlidersHorizontal className="w-4 h-4 text-[#8C7E72] shrink-0" />
-              <div>
-                <p className="text-xs font-medium text-[#2D251E] group-hover:text-[#8E6D52] transition-colors">
-                  Per-event overrides
-                </p>
-                <p className="text-[11px] text-[#8C7E72]">
-                  Customize coverage, hours or special notes for each event
-                </p>
-              </div>
-            </div>
-            <ChevronRight
-              className={`w-4 h-4 text-[#8C7E72] transition-transform duration-200 ${
-                showOverrides ? 'transform rotate-90' : ''
-              }`}
-            />
-          </button>
 
-          {showOverrides && (
-            <div className="mt-3 flex flex-col gap-2 pt-2 border-t border-[#EAE3D9]/60">
-              {data.events.map((ev, idx) => (
-                <div
-                  key={ev.id}
-                  className="p-3 rounded-2xl bg-white/60 border border-[#E6DDD2] text-xs flex flex-col gap-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-[#2D251E]">
-                      {idx + 1}. {ev.type}
-                    </span>
-                    {data.events.length > 1 && (
-                      <button
-                        type="button"
-                        onClick={() => removeEvent(ev.id)}
-                        className="text-[#A19588] hover:text-rose-600 transition-colors p-1"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
-                    )}
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/80 border border-[#E6DDD2]">
-                      <Calendar className="w-3.5 h-3.5 text-[#8C7E72]" />
-                      <input
-                        type="date"
-                        value={ev.date || data.primaryDate}
-                        onChange={(e) => updateEventField(ev.id, 'date', e.target.value)}
-                        className="bg-transparent text-[11px] text-[#2D251E] outline-none w-full cursor-pointer"
-                      />
-                    </div>
-                    <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/80 border border-[#E6DDD2]">
-                      <MapPin className="w-3.5 h-3.5 text-[#8C7E72]" />
-                      <input
-                        type="text"
-                        placeholder="Venue"
-                        value={ev.location || data.primaryLocation}
-                        onChange={(e) => updateEventField(ev.id, 'location', e.target.value)}
-                        className="bg-transparent text-[11px] text-[#2D251E] outline-none w-full placeholder:text-[#A19588]"
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
 
         {/* Section 3: Photography Crew Size */}
         <div className="border-t border-[#EAE3D9] pt-3 flex flex-col gap-2">
