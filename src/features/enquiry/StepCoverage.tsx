@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Sparkles,
   ChevronRight,
   Gem,
   Music,
@@ -167,12 +166,9 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
         {/* Section 1: Select Ceremonies */}
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between pb-1.5 border-b border-[#EAE0D5]">
-            <div className="flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
-              <span className="text-xs sm:text-[13px] font-bold text-[#1A140F] tracking-wide">
-                Select ceremonies
-              </span>
-            </div>
+            <span className="text-xs sm:text-[13px] font-bold text-[#1A140F] tracking-wide">
+              Select ceremonies
+            </span>
             <span className="text-[10px] uppercase font-bold text-[#63452B] bg-[#8E6D52]/15 border border-[#8E6D52]/30 px-2.5 py-0.5 rounded-full tracking-wider">
               Select multiple
             </span>
@@ -230,10 +226,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                   key={custom.id}
                   className="col-span-2 flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-xl text-[13px] sm:text-sm font-semibold bg-[#F6EDE4] border-[1.5px] border-[#8E6D52] text-[#140E0A] shadow-2xs"
                 >
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
-                    <span>{custom.type}</span>
-                  </div>
+                  <span className="font-semibold">{custom.type}</span>
                   <button
                     type="button"
                     onClick={(e) => {
@@ -297,12 +290,9 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
         <div className="border-t border-[#EAE0D5] pt-5 flex flex-col gap-4">
           <div>
             <div className="flex items-center justify-between pb-1.5 border-b border-[#EAE0D5]">
-              <div className="flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
-                <label className="text-xs sm:text-[13px] font-bold text-[#1A140F] tracking-wide">
-                  Services & Deliverables
-                </label>
-              </div>
+              <label className="text-xs sm:text-[13px] font-bold text-[#1A140F] tracking-wide">
+                Services & Deliverables
+              </label>
               <span className="text-[10px] uppercase font-bold text-[#63452B] bg-[#8E6D52]/15 border border-[#8E6D52]/30 px-2.5 py-0.5 rounded-full tracking-wider">
                 Select multiple
               </span>
@@ -333,7 +323,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                   >
                     <div className="flex items-center gap-2 min-w-0">
                       <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
-                        {DELIVERABLE_ICONS[item.id] || <Sparkles className="w-3.5 h-3.5" />}
+                        {DELIVERABLE_ICONS[item.id] || <Camera className="w-3.5 h-3.5" />}
                       </span>
                       <span className="whitespace-nowrap">{item.label}</span>
                     </div>
@@ -377,7 +367,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                   >
                     <div className="flex items-center gap-2 min-w-0">
                       <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
-                        {DELIVERABLE_ICONS[item.id] || <Sparkles className="w-3.5 h-3.5" />}
+                        {DELIVERABLE_ICONS[item.id] || <Camera className="w-3.5 h-3.5" />}
                       </span>
                       <span className="whitespace-nowrap">{item.label}</span>
                     </div>
