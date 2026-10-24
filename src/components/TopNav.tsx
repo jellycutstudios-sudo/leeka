@@ -42,8 +42,8 @@ export const TopNav: React.FC<TopNavProps> = ({
         </h1>
 
         {/* Step indicator */}
-        <div className="w-20 text-right">
-          <span className="text-xs font-serif italic text-[#5C4D3E] font-medium">
+        <div className="w-24 text-right flex items-center justify-end">
+          <span className="text-xs font-sans font-semibold text-[#1A140F] tracking-wide">
             Step {currentStep} of {totalSteps}
           </span>
         </div>

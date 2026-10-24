@@ -173,7 +173,7 @@ export const EnquiryFlow: React.FC = () => {
 
         {/* Discreet Subtle Brand Line at Bottom */}
         <div className="text-center mt-6">
-          <p className="text-[11px] font-serif italic text-[#8C7E72] tracking-wider">
+          <p className="text-[11px] font-sans font-medium text-[#6B5A4D] tracking-wider">
             Leeka Wedding • Fine Art Cinematography & Photography
           </p>
         </div>
