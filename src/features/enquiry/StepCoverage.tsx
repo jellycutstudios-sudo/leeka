@@ -150,7 +150,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
               Coverage
             </h2>
             <p className="text-xs sm:text-[13px] text-[#786C60] mt-1.5 leading-relaxed font-sans">
-              Choose the celebrations and media formats you&apos;d like Leeka Wedding to capture.
+              Choose what you&apos;d like us to capture.
             </p>
           </div>
 
@@ -271,7 +271,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
               </span>
             </div>
             <p className="text-[11px] text-[#8C7E72] pl-5 mt-0.5">
-              Select all photography, album, film & reel formats you&apos;d like included.
+              Choose what you&apos;d like included.
             </p>
           </div>
 
