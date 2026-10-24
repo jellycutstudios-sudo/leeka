@@ -25,7 +25,8 @@ const MONTH_NAMES = [
   'December',
 ];
 
-const AVAILABLE_YEARS = [2026, 2027, 2028, 2029];
+const currentYear = new Date().getFullYear();
+const AVAILABLE_YEARS = [currentYear, currentYear + 1, currentYear + 2, currentYear + 3];
 
 export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
   value,
@@ -36,37 +37,39 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [viewYear, setViewYear] = useState<number>(() => {
+  const getTargetDate = () => {
     if (value && value.includes('-')) {
       const d = new Date(value + 'T00:00:00');
-      if (!isNaN(d.getTime())) return d.getFullYear();
+      if (!isNaN(d.getTime())) return { year: d.getFullYear(), month: d.getMonth() };
     }
-    return 2026;
-  });
-
-  const [viewMonth, setViewMonth] = useState<number>(() => {
-    if (value && value.includes('-')) {
-      const d = new Date(value + 'T00:00:00');
-      if (!isNaN(d.getTime())) return d.getMonth();
-    }
-    return 0;
-  });
-
-  const openPicker = () => {
-    if (value && value.includes('-')) {
-      const d = new Date(value + 'T00:00:00');
-      if (!isNaN(d.getTime())) {
-        setViewYear(d.getFullYear());
-        setViewMonth(d.getMonth());
+    const now = new Date();
+    if (minDate && minDate.includes('-')) {
+      const minD = new Date(minDate + 'T00:00:00');
+      if (!isNaN(minD.getTime()) && minD.getTime() > now.getTime()) {
+        return { year: minD.getFullYear(), month: minD.getMonth() };
       }
     }
+    return { year: now.getFullYear(), month: now.getMonth() };
+  };
+
+  const [viewYear, setViewYear] = useState<number>(() => getTargetDate().year);
+  const [viewMonth, setViewMonth] = useState<number>(() => getTargetDate().month);
+
+  const availableYears = AVAILABLE_YEARS.includes(viewYear)
+    ? AVAILABLE_YEARS
+    : [...AVAILABLE_YEARS, viewYear].sort((a, b) => a - b);
+
+  const openPicker = () => {
+    const target = getTargetDate();
+    setViewYear(target.year);
+    setViewMonth(target.month);
     setIsOpen(true);
   };
 
   const prevMonth = () => {
     if (viewMonth === 0) {
       setViewMonth(11);
-      setViewYear((y) => Math.max(AVAILABLE_YEARS[0], y - 1));
+      setViewYear((y) => Math.max(availableYears[0], y - 1));
     } else {
       setViewMonth((m) => m - 1);
     }
@@ -75,7 +78,7 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
   const nextMonth = () => {
     if (viewMonth === 11) {
       setViewMonth(0);
-      setViewYear((y) => Math.min(AVAILABLE_YEARS[AVAILABLE_YEARS.length - 1], y + 1));
+      setViewYear((y) => Math.min(availableYears[availableYears.length - 1], y + 1));
     } else {
       setViewMonth((m) => m + 1);
     }
@@ -164,7 +167,7 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
             <div className="flex flex-col gap-1">
               <span className="text-[11px] font-medium text-[#7D7166] pl-0.5">Year</span>
               <div className="flex items-center gap-1.5 p-1 bg-[#EFE9DF]/80 rounded-2xl border border-[#E4DCCF]">
-                {AVAILABLE_YEARS.map((y) => (
+                {availableYears.map((y) => (
                   <button
                     key={y}
                     type="button"
