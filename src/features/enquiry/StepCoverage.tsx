@@ -7,7 +7,6 @@ import {
   Sun,
   Flower2,
   Wine,
-  MoreHorizontal,
   Camera,
   BookOpen,
   Film,
@@ -141,30 +140,30 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
 
   return (
     <div className="w-full flex flex-col gap-5 animate-fadeIn">
-      {/* Frosted Glass Panel */}
-      <div className="glass-panel rounded-[32px] p-6 sm:p-7 flex flex-col gap-5 relative overflow-hidden">
+      {/* Frosted Glass Panel Container */}
+      <div className="glass-panel rounded-[28px] sm:rounded-[32px] px-4.5 py-6 sm:p-7 flex flex-col gap-6 relative overflow-hidden">
         {/* Header with Botanical Art */}
-        <div className="flex items-start justify-between gap-3 pt-1">
+        <div className="flex items-start justify-between gap-3 pt-0.5">
           <div className="flex-1 pr-1">
             <h2 className="font-editorial text-2xl sm:text-3xl font-medium tracking-tight text-[#1A140F] leading-tight">
               Coverage
             </h2>
-            <p className="text-xs sm:text-[13px] text-[#4D4034] mt-1.5 leading-relaxed font-sans">
+            <p className="text-xs sm:text-[13px] text-[#4D4034] mt-1 leading-relaxed font-sans">
               Choose what you&apos;d like us to capture.
             </p>
           </div>
 
-          <div className="w-12 h-12 shrink-0 opacity-80 flex items-center justify-center">
+          <div className="w-11 h-11 shrink-0 opacity-80 flex items-center justify-center">
             <Flower2 className="w-8 h-8 text-[#8E6D52] stroke-[1.8]" />
           </div>
         </div>
 
-        {/* Section 1: Select Ceremonies (Bordered Card) */}
-        <div className="rounded-2xl border border-[#D5C5B5] bg-[#FAF7F2] p-3 sm:p-4 flex flex-col gap-2.5 shadow-2xs">
+        {/* Section 1: Select Ceremonies */}
+        <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between pb-1.5 border-b border-[#EAE0D5]">
             <div className="flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
-              <span className="text-xs font-bold text-[#1A140F] tracking-wide">
+              <span className="text-xs sm:text-[13px] font-bold text-[#1A140F] tracking-wide">
                 Select ceremonies
               </span>
             </div>
@@ -172,11 +171,11 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
               Select multiple
             </span>
           </div>
-          <span className="text-[11px] text-[#524438] -mt-0.5 pl-0.5">
+          <span className="text-[11px] text-[#524438] -mt-1 pl-0.5">
             Choose all celebrations to be covered
           </span>
 
-          <div className="grid grid-cols-2 gap-2 mt-0.5">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mt-0.5">
             {CEREMONY_OPTIONS.map((item) => {
               const active = isSelected(item.label);
               return (
@@ -184,13 +183,13 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                   key={item.id}
                   type="button"
                   onClick={() => toggleEvent(item.label)}
-                  className={`flex items-center justify-between py-2.5 px-2.5 sm:px-3 rounded-xl text-[12px] sm:text-[13px] font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                  className={`flex items-center justify-between py-3.5 px-3.5 sm:px-4 rounded-xl text-[13px] sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                     active
                       ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] shadow-xs'
                       : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                   }`}
                 >
-                  <div className="flex items-center gap-1.5 min-w-0">
+                  <div className="flex items-center gap-2 min-w-0">
                     <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
                       {item.icon}
                     </span>
@@ -199,29 +198,57 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
 
                   {/* Multi-select checkmark circle */}
                   <div
-                    className={`w-3.5 h-3.5 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
+                    className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
                       active
                         ? 'bg-[#8E6D52] text-white shadow-2xs'
                         : 'border-2 border-[#B4A08E] bg-white'
                     }`}
                   >
-                    {active && <Check className="w-2 h-2 stroke-[3] text-white" />}
+                    {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}
                   </div>
                 </button>
               );
             })}
 
-            {/* Custom Button */}
+            {/* Custom Events Added */}
+            {data.events
+              .filter(
+                (e) =>
+                  Boolean(e.type && e.type.trim()) &&
+                  !CEREMONY_OPTIONS.some(
+                    (o) => o.label.toLowerCase() === e.type.trim().toLowerCase()
+                  )
+              )
+              .map((custom) => (
+                <div
+                  key={custom.id}
+                  className="col-span-2 flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-xl text-[13px] sm:text-sm font-semibold bg-[#F6EDE4] border border-[#8E6D52] text-[#140E0A] shadow-2xs"
+                >
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
+                    <span>{custom.type}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => toggleEvent(custom.type)}
+                    className="text-[#8E6D52] hover:text-[#5C4532] text-xs font-bold px-1.5 py-0.5 cursor-pointer"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+
+            {/* Full-width Add Custom Ceremony Button */}
             <button
               type="button"
               onClick={() => setShowCustomInput(!showCustomInput)}
-              className="flex items-center justify-between py-2.5 px-2.5 sm:px-3 rounded-xl text-[12px] sm:text-[13px] font-semibold bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1] transition-all cursor-pointer"
+              className="col-span-2 flex items-center justify-between py-3 px-3.5 sm:px-4 rounded-xl text-xs sm:text-[13px] font-semibold bg-white border-1.5 border-dashed border-[#CBB8A7] text-[#5C4532] hover:border-[#8E6D52] hover:bg-[#FAF6F1] transition-all cursor-pointer shadow-2xs"
             >
-              <div className="flex items-center gap-1.5 min-w-0">
-                <MoreHorizontal className="w-3.5 h-3.5 text-[#6E533C] shrink-0" />
-                <span className="whitespace-nowrap">Custom</span>
+              <div className="flex items-center gap-2 min-w-0">
+                <Plus className="w-3.5 h-3.5 text-[#8E6D52] shrink-0" />
+                <span>Add Custom Ceremony</span>
               </div>
-              <Plus className="w-3.5 h-3.5 text-[#8E6D52] shrink-0 ml-1" />
+              <span className="text-[11px] text-[#8E6D52] font-semibold">+ Add</span>
             </button>
           </div>
 
@@ -256,13 +283,13 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
           )}
         </div>
 
-        {/* Section 2: Services & Deliverables (Bordered Card) */}
-        <div className="rounded-2xl border border-[#D5C5B5] bg-[#FAF7F2] p-3 sm:p-4 flex flex-col gap-3.5 shadow-2xs">
+        {/* Section 2: Services & Deliverables */}
+        <div className="border-t border-[#EAE0D5] pt-5 flex flex-col gap-4">
           <div>
             <div className="flex items-center justify-between pb-1.5 border-b border-[#EAE0D5]">
               <div className="flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#8E6D52]" />
-                <label className="text-xs font-bold text-[#1A140F] tracking-wide">
+                <label className="text-xs sm:text-[13px] font-bold text-[#1A140F] tracking-wide">
                   Services & Deliverables
                 </label>
               </div>
@@ -275,12 +302,12 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
             </p>
           </div>
 
-          {/* Group A: Photography & Album */}
+          {/* Group A: Photography & Keepsake */}
           <div className="flex flex-col gap-1.5">
-            <span className="text-[10px] font-bold text-[#5C4532] tracking-wider uppercase pl-0.5">
+            <span className="text-[10.5px] font-bold text-[#5C4532] tracking-wider uppercase pl-0.5">
               Photography & Keepsake
             </span>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
               {AVAILABLE_DELIVERABLES.filter((d) => d.category === 'photo').map((item) => {
                 const active = (data.deliverables || []).includes(item.id);
                 return (
@@ -288,13 +315,13 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                     key={item.id}
                     type="button"
                     onClick={() => toggleDeliverable(item.id)}
-                    className={`flex items-center justify-between py-2.5 px-2.5 sm:px-3 rounded-xl text-[12px] sm:text-[13px] font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                    className={`flex items-center justify-between py-3.5 px-3.5 sm:px-4 rounded-xl text-[13px] sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                       active
                         ? 'bg-gradient-to-r from-[#F6EDE4] to-[#EBDECE] border-2 border-[#8E6D52] text-[#140E0A] shadow-xs'
                         : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                     }`}
                   >
-                    <div className="flex items-center gap-1.5 min-w-0">
+                    <div className="flex items-center gap-2 min-w-0">
                       <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
                         {DELIVERABLE_ICONS[item.id] || <Sparkles className="w-3.5 h-3.5" />}
                       </span>
@@ -303,13 +330,13 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
 
                     {/* Multi-select checkmark circle */}
                     <div
-                      className={`w-3.5 h-3.5 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
+                      className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
                         active
                           ? 'bg-[#8E6D52] text-white shadow-2xs'
                           : 'border-2 border-[#B4A08E] bg-white'
                       }`}
                     >
-                      {active && <Check className="w-2 h-2 stroke-[3] text-white" />}
+                      {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}
                     </div>
                   </button>
                 );
@@ -318,11 +345,11 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
           </div>
 
           {/* Group B: Films & Reels */}
-          <div className="border-t border-[#EAE0D5] pt-2.5 flex flex-col gap-1.5">
-            <span className="text-[10px] font-bold text-[#5C4532] tracking-wider uppercase pl-0.5">
+          <div className="border-t border-[#EAE0D5] pt-3 flex flex-col gap-1.5">
+            <span className="text-[10.5px] font-bold text-[#5C4532] tracking-wider uppercase pl-0.5">
               Films & Reels
             </span>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
               {AVAILABLE_DELIVERABLES.filter((d) => d.category === 'film').map((item) => {
                 const active = (data.deliverables || []).includes(item.id);
                 return (
@@ -330,7 +357,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                     key={item.id}
                     type="button"
                     onClick={() => toggleDeliverable(item.id)}
-                    className={`flex items-center justify-between py-2.5 px-2.5 sm:px-3 rounded-xl text-[12px] sm:text-[13px] font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
+                    className={`flex items-center justify-between py-3.5 px-3.5 sm:px-4 rounded-xl text-[13px] sm:text-sm font-semibold transition-all duration-200 cursor-pointer select-none active:scale-[0.98] ${
                       item.id === 'full_video' ? 'col-span-2' : ''
                     } ${
                       active
@@ -338,7 +365,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
                         : 'bg-white border-1.5 border-[#D5C5B5] text-[#221810] hover:border-[#8E6D52] hover:bg-[#FAF6F1]'
                     }`}
                   >
-                    <div className="flex items-center gap-1.5 min-w-0">
+                    <div className="flex items-center gap-2 min-w-0">
                       <span className={`shrink-0 ${active ? 'text-[#8E6D52]' : 'text-[#6E533C]'}`}>
                         {DELIVERABLE_ICONS[item.id] || <Sparkles className="w-3.5 h-3.5" />}
                       </span>
@@ -347,13 +374,13 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
 
                     {/* Multi-select checkmark circle */}
                     <div
-                      className={`w-3.5 h-3.5 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
+                      className={`w-4 h-4 rounded-full shrink-0 flex items-center justify-center transition-all duration-200 ml-1 ${
                         active
                           ? 'bg-[#8E6D52] text-white shadow-2xs'
                           : 'border-2 border-[#B4A08E] bg-white'
                       }`}
                     >
-                      {active && <Check className="w-2 h-2 stroke-[3] text-white" />}
+                      {active && <Check className="w-2.5 h-2.5 stroke-[3] text-white" />}
                     </div>
                   </button>
                 );
