@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import {
   Sparkles,
-  Users,
-  Video,
   ChevronRight,
   Gem,
   Music,
@@ -43,8 +41,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
   const validateAndProceed = () => {
     const result = step2Schema.safeParse({
       events: data.events,
-      photographerCount: data.photographerCount,
-      videography: data.videography,
+      deliverables: data.deliverables,
     });
 
     if (!result.success) {
@@ -211,95 +208,7 @@ export const StepCoverage: React.FC<StepCoverageProps> = ({
 
 
 
-        {/* Section 3: Photography Crew Size */}
-        <div className="border-t border-[#EAE3D9] pt-3 flex flex-col gap-2">
-          <div className="flex items-center gap-1.5">
-            <Users className="w-3.5 h-3.5 text-[#9C7C5F]" />
-            <label className="text-xs font-semibold text-[#2D251E] tracking-wide">
-              Photography crew size
-            </label>
-          </div>
 
-          <div
-            className="bg-[#EFE9DF]/80 p-1 rounded-2xl flex items-center border border-[#E4DCCF]"
-            role="radiogroup"
-            aria-label="Photography crew size"
-          >
-            {(
-              [
-                { id: 'not_sure', label: 'Not sure' },
-                { id: '1', label: '1' },
-                { id: '2', label: '2' },
-                { id: '3_plus', label: '3+' },
-              ] as const
-            ).map((item) => {
-              const active = data.photographerCount === item.id;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  role="radio"
-                  aria-checked={active}
-                  onClick={() => onChange({ photographerCount: item.id })}
-                  className={`flex-1 py-2 text-xs sm:text-sm font-medium rounded-xl transition-all duration-200 cursor-pointer select-none text-center ${
-                    active
-                      ? 'bg-gradient-to-r from-[#9C7C5F] to-[#826246] text-white shadow-xs'
-                      : 'text-[#6B5E52] hover:text-[#2D251E]'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Section 4: Cinematic Film */}
-        <div className="border-t border-[#EAE3D9] pt-3 flex flex-col gap-2">
-          <div>
-            <div className="flex items-center gap-1.5">
-              <Video className="w-3.5 h-3.5 text-[#9C7C5F]" />
-              <label className="text-xs font-semibold text-[#2D251E] tracking-wide">
-                Cinematic film
-              </label>
-            </div>
-            <p className="text-[11px] text-[#8C7E72] mt-0.5 pl-5">
-              Add a beautifully edited cinematic film to your collection.
-            </p>
-          </div>
-
-          <div
-            className="bg-[#EFE9DF]/80 p-1 rounded-2xl flex items-center border border-[#E4DCCF]"
-            role="radiogroup"
-            aria-label="Cinematic film"
-          >
-            {(
-              [
-                { id: 'not_sure', label: 'Not sure' },
-                { id: 'yes', label: 'Yes' },
-                { id: 'no', label: 'No' },
-              ] as const
-            ).map((item) => {
-              const active = data.videography === item.id;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  role="radio"
-                  aria-checked={active}
-                  onClick={() => onChange({ videography: item.id })}
-                  className={`flex-1 py-2 text-xs sm:text-sm font-medium rounded-xl transition-all duration-200 cursor-pointer select-none text-center ${
-                    active
-                      ? 'bg-gradient-to-r from-[#9C7C5F] to-[#826246] text-white shadow-xs'
-                      : 'text-[#6B5E52] hover:text-[#2D251E]'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Section 5: Services & Deliverables */}
         <div className="border-t border-[#EAE3D9] pt-3 flex flex-col gap-3">

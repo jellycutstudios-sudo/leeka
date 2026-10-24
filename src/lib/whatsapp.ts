@@ -33,39 +33,7 @@ function getCoverageLabel(coverage: EnquiryData['coverageFor']): string {
   }
 }
 
-/**
- * Maps photographer choice to human label.
- */
-function getPhotographerLabel(count: EnquiryData['photographerCount']): string {
-  switch (count) {
-    case '1':
-      return '1 Photographer';
-    case '2':
-      return '2 Photographers (Candid + Traditional)';
-    case '3_plus':
-      return '3+ Multi-Camera Crew';
-    case 'not_sure':
-      return 'Open / Need studio advice';
-    default:
-      return 'Flexible';
-  }
-}
 
-/**
- * Maps videography choice to human label.
- */
-function getVideographyLabel(choice: EnquiryData['videography']): string {
-  switch (choice) {
-    case 'yes':
-      return 'Yes (Cinematic Film & Teaser)';
-    case 'no':
-      return 'No (Photography Only)';
-    case 'not_sure':
-      return 'Open / Send pricing with & without film';
-    default:
-      return 'Not specified';
-  }
-}
 
 /**
  * Generates a clean, organized, understandable template for WhatsApp.
@@ -119,11 +87,7 @@ export function buildWhatsAppMessage(data: EnquiryData): string {
   }
   lines.push('');
 
-  // 4. Team Preferences
-  lines.push('*Team Preferences*');
-  lines.push(`• Photography: ${getPhotographerLabel(data.photographerCount)}`);
-  lines.push(`• Cinematic Film: ${getVideographyLabel(data.videography)}`);
-  lines.push('');
+
 
   // 5. Requested Deliverables & Reels (if any selected)
   if (data.deliverables && data.deliverables.length > 0) {

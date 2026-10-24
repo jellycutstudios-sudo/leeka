@@ -45,15 +45,15 @@ export const step2Schema = z.object({
       })
     )
     .min(1, { message: 'Please select at least one event to be covered' }),
-  photographerCount: z.enum(['not_sure', '1', '2', '3_plus']),
-  videography: z.enum(['yes', 'no', 'not_sure']),
+  photographerCount: z.enum(['not_sure', '1', '2', '3_plus']).optional(),
+  videography: z.enum(['yes', 'no', 'not_sure']).optional(),
   deliverables: z.array(z.string()).optional(),
 });
 
 export const fullEnquirySchema = step1Schema.extend({
   events: step2Schema.shape.events,
-  photographerCount: step2Schema.shape.photographerCount,
-  videography: step2Schema.shape.videography,
+  photographerCount: step2Schema.shape.photographerCount.optional(),
+  videography: step2Schema.shape.videography.optional(),
   deliverables: z.array(z.string()).optional(),
   extras: z.array(z.string()),
   otherExtra: z.string().optional(),

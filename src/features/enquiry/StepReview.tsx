@@ -5,8 +5,6 @@ import {
   Calendar,
   MapPin,
   Sparkles,
-  Camera,
-  Video,
   ChevronRight,
   Copy,
   Check,
@@ -71,17 +69,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
   const coverageScopeLabel =
     data.coverageFor === 'both' ? 'Both' : data.coverageFor === 'bride' ? 'Bride' : 'Groom';
 
-  const crewSizeLabel =
-    data.photographerCount === '1'
-      ? '1 Photographer'
-      : data.photographerCount === '2'
-      ? '2 Photographers'
-      : data.photographerCount === '3_plus'
-      ? '3+ Photographers'
-      : 'Not sure';
 
-  const videoLabel =
-    data.videography === 'yes' ? 'Yes' : data.videography === 'no' ? 'No' : 'Not sure';
 
   const ceremoniesList =
     data.events.map((e) => e.type).join(', ') || 'Wedding / Muhurtham';
@@ -215,41 +203,7 @@ export const StepReview: React.FC<StepReviewProps> = ({
             </button>
           </div>
 
-          {/* Row 6: Crew size */}
-          <div className="py-2.5 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3 flex-1 min-w-0">
-              <Camera className="w-4 h-4 text-[#8C7E72] shrink-0" />
-              <div className="min-w-0">
-                <span className="text-[11px] text-[#8C7E72] block">Crew size</span>
-                <p className="font-medium text-[#2D251E]">{crewSizeLabel}</p>
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() => onEditStep(2)}
-              className="px-2.5 py-1 text-[11px] font-medium text-[#6B5E52] bg-white/70 hover:bg-white border border-[#E6DDD2] rounded-lg transition-colors cursor-pointer shrink-0"
-            >
-              Edit
-            </button>
-          </div>
 
-          {/* Row 7: Cinematic film */}
-          <div className="py-2.5 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3 flex-1 min-w-0">
-              <Video className="w-4 h-4 text-[#8C7E72] shrink-0" />
-              <div className="min-w-0">
-                <span className="text-[11px] text-[#8C7E72] block">Cinematic film</span>
-                <p className="font-medium text-[#2D251E]">{videoLabel}</p>
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() => onEditStep(2)}
-              className="px-2.5 py-1 text-[11px] font-medium text-[#6B5E52] bg-white/70 hover:bg-white border border-[#E6DDD2] rounded-lg transition-colors cursor-pointer shrink-0"
-            >
-              Edit
-            </button>
-          </div>
 
           {/* Row 8: Deliverables & Reels (if any selected) */}
           {data.deliverables && data.deliverables.length > 0 && (

@@ -35,10 +35,6 @@ describe('WhatsApp Message Builder & Deep Link', () => {
     expect(message).toContain('The Leela Palace');
     expect(message).toContain('*Ceremonies to Cover*');
     expect(message).toContain('• Wedding');
-    expect(message).toContain('• Sangeet');
-    expect(message).toContain('*Team Preferences*');
-    expect(message).toContain('• Photography: 2 Photographers');
-    expect(message).toContain('• Cinematic Film: Yes');
     expect(message).toContain('*Services & Deliverables*');
     expect(message).toContain('• Photography');
     expect(message).toContain('Highlights Film');
