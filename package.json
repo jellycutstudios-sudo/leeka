@@ -9,7 +9,7 @@
     "lint": "oxlint",
     "test": "vitest run",
     "preview": "vite preview",
-    "deploy": "npm run build && npx wrangler pages deploy dist --project-name=leeka-wedding --branch=main --commit-dirty=true"
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name=leeka-wedding --branch=leeka --commit-dirty=true"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
