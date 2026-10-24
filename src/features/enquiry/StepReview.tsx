@@ -29,9 +29,9 @@ interface StepReviewProps {
 
 const EXTRAS_OPTIONS = [
   { id: 'drone', label: 'Drone', icon: <Navigation className="w-3.5 h-3.5" /> },
-  { id: 'sfx_fireworks', label: 'Cold Sparks', icon: <Flame className="w-3.5 h-3.5" /> },
+  { id: 'sfx_fireworks', label: 'Sfx items', icon: <Flame className="w-3.5 h-3.5" /> },
   { id: 'photobooth', label: 'Photobooth', icon: <Camera className="w-3.5 h-3.5" /> },
-  { id: 'butterfly', label: 'Butterfly Effect', icon: <Sparkles className="w-3.5 h-3.5" /> },
+  { id: 'butterfly', label: 'Butterfly Drone', icon: <Sparkles className="w-3.5 h-3.5" /> },
 ];
 
 export const StepReview: React.FC<StepReviewProps> = ({

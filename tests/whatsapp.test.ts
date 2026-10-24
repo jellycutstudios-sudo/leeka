@@ -43,7 +43,7 @@ describe('WhatsApp Message Builder & Deep Link', () => {
     expect(message).toContain('Album');
     expect(message).toContain('*Creative Extras*');
     expect(message).toContain('Drone');
-    expect(message).toContain('Cold Sparks');
+    expect(message).toContain('Sfx items');
     expect(message).toContain('Looking for warm candid editorial style');
 
     const url = buildWhatsAppUrl(sample);

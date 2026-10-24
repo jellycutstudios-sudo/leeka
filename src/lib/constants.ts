@@ -28,8 +28,8 @@ export const STANDARD_EVENTS = [
 
 export const AVAILABLE_EXTRAS = [
   { id: 'photobooth', label: 'Interactive Photobooth', description: 'Instant physical printouts & digital sharing for guests' },
-  { id: 'sfx_fireworks', label: 'SFX & Cold Sparks', description: 'Safe cold-pyro fountains & dry-ice low fog for couple entry' },
-  { id: 'butterfly', label: 'Butterfly Effect & Confetti', description: 'Dreamy visual shower effect for stage & varmala moments' },
+  { id: 'sfx_fireworks', label: 'Sfx items', description: 'Safe cold-pyro fountains & dry-ice low fog for couple entry' },
+  { id: 'butterfly', label: 'Butterfly Drone', description: 'Magical butterfly drone visual effect for stage & grand moments' },
   { id: 'drone', label: 'Drone Cinematic Coverage', description: 'Sweeping aerial 4K perspectives of venue and procession' },
   { id: 'same_day_edit', label: 'Same-Day Reel / Teaser', description: 'Quick-turnaround 60s vertical video to post the next morning' },
   { id: 'luxury_album', label: 'Handcrafted Wedding Album', description: 'Archival fine-art prints with presentation box' },
