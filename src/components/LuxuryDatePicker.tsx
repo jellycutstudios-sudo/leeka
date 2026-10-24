@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { Calendar as CalendarIcon, ChevronLeft, ChevronRight, ChevronDown, X, Sparkles } from 'lucide-react';
-import { formatDisplayDate, getTodayDateString } from '../lib/formatDate';
+import {
+  formatDisplayDate,
+  getTodayDateString,
+  getDefaultCalendarView,
+  parseDateString,
+} from '../lib/formatDate';
 
 interface LuxuryDatePickerProps {
   value: string; // YYYY-MM-DD
@@ -37,48 +42,57 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const getTargetDate = () => {
-    if (value && value.includes('-')) {
-      const d = new Date(value + 'T00:00:00');
-      if (!isNaN(d.getTime())) return { year: d.getFullYear(), month: d.getMonth() };
-    }
-    const now = new Date();
-    if (minDate && minDate.includes('-')) {
-      const minD = new Date(minDate + 'T00:00:00');
-      if (!isNaN(minD.getTime()) && minD.getTime() > now.getTime()) {
-        return { year: minD.getFullYear(), month: minD.getMonth() };
-      }
-    }
-    return { year: now.getFullYear(), month: now.getMonth() };
-  };
+  const minParsed = parseDateString(minDate);
 
-  const [viewYear, setViewYear] = useState<number>(() => getTargetDate().year);
-  const [viewMonth, setViewMonth] = useState<number>(() => getTargetDate().month);
+  const [viewYear, setViewYear] = useState<number>(() => getDefaultCalendarView(value, minDate).year);
+  const [viewMonth, setViewMonth] = useState<number>(() => getDefaultCalendarView(value, minDate).month);
 
   const availableYears = AVAILABLE_YEARS.includes(viewYear)
     ? AVAILABLE_YEARS
     : [...AVAILABLE_YEARS, viewYear].sort((a, b) => a - b);
 
+  const minAllowedYear = availableYears[0];
+  const maxAllowedYear = availableYears[availableYears.length - 1];
+
+  const isMinMonth = (() => {
+    if (minParsed) {
+      if (viewYear < minParsed.year) return true;
+      if (viewYear === minParsed.year && viewMonth <= minParsed.month) return true;
+    }
+    return viewYear <= minAllowedYear && viewMonth <= 0;
+  })();
+
+  const isMaxMonth = viewYear >= maxAllowedYear && viewMonth >= 11;
+
   const openPicker = () => {
-    const target = getTargetDate();
+    const target = getDefaultCalendarView(value, minDate);
     setViewYear(target.year);
     setViewMonth(target.month);
     setIsOpen(true);
   };
 
+  const handleSelectYear = (y: number) => {
+    setViewYear(y);
+    if (minParsed && y === minParsed.year && viewMonth < minParsed.month) {
+      setViewMonth(minParsed.month);
+    }
+  };
+
   const prevMonth = () => {
+    if (isMinMonth) return;
     if (viewMonth === 0) {
       setViewMonth(11);
-      setViewYear((y) => Math.max(availableYears[0], y - 1));
+      setViewYear((y) => Math.max(minAllowedYear, y - 1));
     } else {
       setViewMonth((m) => m - 1);
     }
   };
 
   const nextMonth = () => {
+    if (isMaxMonth) return;
     if (viewMonth === 11) {
       setViewMonth(0);
-      setViewYear((y) => Math.min(availableYears[availableYears.length - 1], y + 1));
+      setViewYear((y) => Math.min(maxAllowedYear, y + 1));
     } else {
       setViewMonth((m) => m + 1);
     }
@@ -171,7 +185,7 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
                   <button
                     key={y}
                     type="button"
-                    onClick={() => setViewYear(y)}
+                    onClick={() => handleSelectYear(y)}
                     className={`flex-1 py-1.5 text-xs font-medium rounded-xl transition-all cursor-pointer ${
                       viewYear === y
                         ? 'bg-gradient-to-r from-[#9C7C5F] to-[#826246] text-white shadow-2xs font-semibold'
@@ -191,7 +205,12 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
                 <button
                   type="button"
                   onClick={prevMonth}
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-[#6B5E52] hover:bg-white border border-[#E6DDD2]/80 transition-all cursor-pointer shadow-2xs active:scale-95"
+                  disabled={isMinMonth}
+                  className={`w-9 h-9 rounded-full flex items-center justify-center border border-[#E6DDD2]/80 transition-all shadow-2xs ${
+                    isMinMonth
+                      ? 'text-[#C9BFB5] opacity-40 cursor-not-allowed'
+                      : 'text-[#6B5E52] hover:bg-white cursor-pointer active:scale-95'
+                  }`}
                   title="Previous month"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -205,11 +224,16 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
                     onChange={(e) => setViewMonth(Number(e.target.value))}
                     className="w-full font-editorial text-base sm:text-lg font-semibold text-[#2D251E] bg-white/90 border border-[#E6DDD2] rounded-xl px-4 py-1.5 pr-8 cursor-pointer shadow-2xs hover:border-[#8E6D52] transition-colors appearance-none text-center"
                   >
-                    {MONTH_NAMES.map((name, idx) => (
-                      <option key={name} value={idx}>
-                        {name} {viewYear}
-                      </option>
-                    ))}
+                    {MONTH_NAMES.map((name, idx) => {
+                      const isPastMonth = Boolean(
+                        minParsed && viewYear === minParsed.year && idx < minParsed.month
+                      );
+                      return (
+                        <option key={name} value={idx} disabled={isPastMonth}>
+                          {name} {viewYear}
+                        </option>
+                      );
+                    })}
                   </select>
                   <ChevronDown className="w-4 h-4 text-[#8C7E72] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
@@ -217,7 +241,12 @@ export const LuxuryDatePicker: React.FC<LuxuryDatePickerProps> = ({
                 <button
                   type="button"
                   onClick={nextMonth}
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-[#6B5E52] hover:bg-white border border-[#E6DDD2]/80 transition-all cursor-pointer shadow-2xs active:scale-95"
+                  disabled={isMaxMonth}
+                  className={`w-9 h-9 rounded-full flex items-center justify-center border border-[#E6DDD2]/80 transition-all shadow-2xs ${
+                    isMaxMonth
+                      ? 'text-[#C9BFB5] opacity-40 cursor-not-allowed'
+                      : 'text-[#6B5E52] hover:bg-white cursor-pointer active:scale-95'
+                  }`}
                   title="Next month"
                 >
                   <ChevronRight className="w-4 h-4" />
