@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "test": "vitest run",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name=leeka-wedding --branch=main"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
