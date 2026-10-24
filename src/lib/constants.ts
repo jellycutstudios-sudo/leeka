@@ -52,21 +52,13 @@ export const INITIAL_ENQUIRY_DATA: EnquiryData = {
   coverageFor: 'both',
   primaryDate: '',
   primaryLocation: '',
-  events: [
-    {
-      id: 'default-wedding',
-      type: 'Wedding / Muhurtham',
-      date: '',
-      location: '',
-      notes: '',
-    },
-  ],
+  events: [],
   photographerCount: '2',
   videography: 'yes',
-  deliverables: ['photography', 'highlights', 'teaser', 'albums'],
+  deliverables: [],
   extras: [],
   otherExtra: '',
   specialRequests: '',
 };
 
-export const STORAGE_KEY = 'leeka_wedding_enquiry_draft_v1';
+export const STORAGE_KEY = 'leeka_wedding_enquiry_draft_v2';

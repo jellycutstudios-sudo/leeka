@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import type { EnquiryData, StepNumber } from '../../types/enquiry';
 import { INITIAL_ENQUIRY_DATA, STORAGE_KEY } from '../../lib/constants';
 import { TopNav } from '../../components/TopNav';
+import { Footer } from '../../components/Footer';
 import { StepContact } from './StepContact';
 import { StepCoverage } from './StepCoverage';
 import { StepReview } from './StepReview';
@@ -83,6 +84,11 @@ export const EnquiryFlow: React.FC = () => {
           onBack={() => {
             if (currentStep > 1) {
               goToStep((currentStep - 1) as StepNumber);
+            }
+          }}
+          onStepClick={(step) => {
+            if (step < currentStep) {
+              goToStep(step);
             }
           }}
         />
@@ -171,12 +177,8 @@ export const EnquiryFlow: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        {/* Discreet Subtle Brand Line at Bottom */}
-        <div className="text-center mt-6">
-          <p className="text-[11px] font-sans font-medium text-[#6B5A4D] tracking-wider">
-            Leeka Wedding • Fine Art Cinematography & Photography
-          </p>
-        </div>
+        {/* Polished Studio Footer */}
+        <Footer />
       </div>
     </div>
   );
